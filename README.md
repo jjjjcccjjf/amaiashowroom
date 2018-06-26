@@ -1,67 +1,110 @@
 
-# RestIgniter CRUD / Headless CMS
+# Amaiashowroom API / Headless CMS
 [![Bless](https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/sakyamuni.svg)](http://lunagao.github.io/BlessYourCodeTag/)
 [![Bless](https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/fsm.svg)](http://lunagao.github.io/BlessYourCodeTag/)
 
-### About RestIgniter CRUD
-A fork of [CodeIgniter Rest Server](https://github.com/chriskacerguis/codeigniter-restserver) that has been enhanced for ease of use mainly CRUD operations for developing your own RESTful API. This project will also include a CMS in the future versions.
+## Overview
+1. [API Documentation](#api-documentation)
+  + Authentication Type
+  + Pagination
+  + Ordering
+1. [API Endpoints](#api-endpoints)
 
-## Requirements
-+ PHP 5.6 or greater
+## API documentation
+#### API URLs
+Development URL: http://amaiashowroom.betaprojex.com/  
+Production URL: tbd
 
-## Dependencies
-+ [PHP dotenv for codeigniter](https://github.com/agungjk/phpdotenv-for-codeigniter)
+####   Authentication Type
++ Basic Auth
 
-## Setup
-This project utilizes [PHP dotenv for codeigniter](https://github.com/agungjk/phpdotenv-for-codeigniter) and it's the only thing you need to edit aside from *creating a database*. The default mode of this application is set to `development`. Therefore, you should create a `.env.development` file in your project root. You can copy the `.env.development.example` provided at the root directory as well.
+#### Pagination
+* tbd
 
-+ Step 1: Create a `.env.development` file at the project root. You can copy the values from  `.env.development.example` as an example and then fill out the necessary information
-+ Step 2: Create a database depending on the `DB_NAME` you setup at the `.env.development`. The default one is `restcrud`, so if you're going to change that (which is most definitely you will), then create a database with the same name.
-+ Step 3: That's it! You've now successfully setup this headless CMS. You can now move on to **Migrations**.
+#### Ordering
+* tbd
 
-## Migrations
+## API Endpoints
 
-Migrations are automatically enabled in the `.env.development` file (if you copy the default values from the example). Though I recommend to set `MIGRATION_ENABLED=` to `FALSE` when your application is in _production mode_ or after you have migrated your database.
+### Options
+#### List all options
+`GET /options/all`
+```json
+Status 200 OK
+{  
+   "personal-information":{  
+      "age":[  
+         "sample",
+         "another",
+         "..."
+      ],
+      "civil-status":[  
+         "..."
+      ],
+      "occupation":[  
+         "..."
+      ],
+      "current-residence":[  
+         "..."
+      ],
+      "work-location":[  
+         "..."
+      ],
+      "how-many-guests":[  
+         "..."
+      ]
+   },
+   "survey":{  
+      "purpose-of-visit":{  
+         "buyer":[  
+            "..."
+         ],
+         "non-buyer":[  
+            "..."
+         ]
+      },
+      "budget":[  
+         "..."
+      ],
+      "projects":{  
+         "house-and-lot":[  
 
-### How to create your own Migrations
+         ],
+         "mid-rise":[  
 
-First if all, migrations can be found in the `application/migrations/` folder. Inside that folder, you can find `application/migrations/example`. Those are migrations that I previously used from other projects. You can take the liberty to copy them or use them as a reference.
+         ],
+         "high-rise":[  
 
-Moving on, here's how you create your own migration files:
+         ]
+      },
+      "when-reserve":[  
 
-+ **Step 1**: Create a new file in the `application/migrations` folder
-+ **Step 2**: The file name must follow the pattern of `YYYYMMDDHHIISS_migration_name`.
+      ]
+   }
+}
+```
 
-**NOTE:** The datetime in the migration you want to create should be *later* than the last one you created.  
-**For example**, if your last file is `20170604120500_crud_table`, then you should do something like `20170604120501_another_table` (this one is one second later) or `20180625000000_another_table` (the date today). Either will work just fine.
+#### Personal information
 
-+ **Step 3**: Refactor the `class name` of the newly created migration. Following our example, it should be `Migration_migration_name`.
-+ **Step 4**: Refactor the table names and field names in the migration as you see fit. You can always use the example migrations as reference if necessary.
+|             Resource           |               Endpoint                 
+| ------------------------------ | -------------------------------------------
+| **All**                        | `GET /options/personal-info/`              
+| **Age**                        | `GET /options/personal-info/age`           
+| **Civil status**               | `GET /options/personal-info/civil-status`   
+| **Occupation**                 | `GET /options/personal-info/occupation`
+| **Current residence**          | `GET /options/personal-info/current-residence`
+| **Work location**              | `GET /options/personal-info/work-location`
+| **How many guests**            | `GET /options/personal-info/how-many-guests`
 
-
-### How to use migrations
-This repo comes with a Migration controller by default. You can add more commands to the controller as you wish. You can find it in the `application/controllers` folder.
-
-Here are the built-in commands that comes with this repo. Replace `http://localhost/your_site` with your base url.
-
-
-* __Latest__  
-`http://localhost/your_site/migrate`
-`http://localhost/your_site/migrate/latest`  
-Access this in your browser to perform your migrations to the latest available migration.
-* __Reset__   
-`http://localhost/your_site/migrate/reset`  
-Use this to roll back all migrations. (Usually removes all data in the database)
-* __Refresh__  
-`http://localhost/your_site/migrate/refresh`  
-Perform `reset` then `latest`
-
-
-## Development reminders
-+ Make sure you customize your `application/config/routes.php` and set up your API routes there manually since Codeigniter uses the _magic routing_. Most of the time, you will have to have more control in your routes for a more pragmatic RESTful design.
-+ In uploading, you can set your `DEFAULT_FOLDER_PERMISSIONS` constant in `application/config/constants.php`
-
-## TODO:
-[x] Integrate create folder in core upload class  
-[ ] Documentation of MY_Controller
-[ ] Documentation of MY_Model
+#### Survey related
+|              Resource                    |               Endpoint                 
+| ---------------------------------------- | -------------------------------------------
+| **All**                                  | `GET /options/survey/`
+| **Purpose of visit (buyer)**             | `GET /options/survey/purpose-of-visit/buyer`
+| **Purpose of visit (non-buyer)**         | `GET /options/survey/purpose-of-visit/non-buyer`
+| **Budget**                               | `GET /options/budget`
+| **Project interested in / Projects**     | `GET /options/survey/projects`
+| **House and lot (Projects)**             | `GET /options/survey/projects/house-and-lot`
+| **Mid rise (Projects)**                  | `GET /options/survey/projects/mid-rise`
+| **High rise (Projects)**                 | `GET /options/survey/projects/high-rise`
+| **When do you intend to reserve**        | `GET /options/survey/when-reserve`
