@@ -10,6 +10,7 @@
   1. Ordering
 1. [API Endpoints](#api-endpoints)
   1. Options
+  1. Showrooms
   1. Sync
 
 ## API documentation
@@ -30,7 +31,8 @@ Production URL: tbd
 
 ### Options
 #### List all options
-`GET /options/all` or `GET /options/`  
+`GET /options/` or  
+`GET /options/all` *(alias)*
 ```json
 Status 200 OK
 {
@@ -141,4 +143,37 @@ Status 200 OK
         ]
     }
 }
+```
+
+### Showrooms
+#### List all showrooms
+`GET /showrooms/`
+```json
+Status 200 OK
+[
+    "Amaia Scapes Bauan",
+    "Amaia Scapes Bulacan",
+    "Amaia Scapes Cabanatuan",
+    "Amaia Scapes Cabuyao",
+    "Amaia Scapes Capas",
+    "Amaia Scapes General Trias",
+    "Amaia Scapes Iloilo",
+    "Amaia Scapes Lucena",
+    "Amaia Scapes North Point",
+    "Amaia Scapes Pampanga",
+    "Amaia Scapes San Fernando",
+    "Amaia Scapes San Pablo",
+    "Amaia Scapes Trece Martires",
+    "Amaia Scapes Urdaneta",
+    "Amaia Series Novaliches (townhouse)",
+    "Amaia Skies Avenida",
+    "Amaia Skies Avenida",
+    "Amaia Skies Cubao",
+    "Amaia Skies Cubao",
+    "Amaia Skies Shaw",
+    "Amaia Skies Shaw",
+    "Amaia Skies Sta. Mesa",
+    "Amaia Skies Sta. Mesa",
+    "Amaia Square Novaliches (shophouse)"
+]
 ```
