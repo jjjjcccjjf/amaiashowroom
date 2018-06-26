@@ -5,13 +5,13 @@
 
 ## Overview
 1. [API Documentation](#api-documentation)
-  1. Authentication Type
-  1. Pagination
-  1. Ordering
+   1. Authentication Type
+   1. Pagination
+   1. Ordering
 1. [API Endpoints](#api-endpoints)
-  1. Options
-  1. Showrooms
-  1. Sync
+   1. [Options](#options)
+   1. [Showrooms](#showrooms)
+   1. [Sync](#sync)
 
 ## API documentation
 #### API URLs
