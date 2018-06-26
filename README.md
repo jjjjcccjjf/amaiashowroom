@@ -173,3 +173,81 @@ Status 200 OK
   "Amaia Square Novaliches (shophouse)"
 ]
 ```
+
+
+### Sync
+#### Sync feedback forms from mobile
+`POST /sync/`  
+##### Parameters  
+**Headers:** `Content-Type: application/json`
+```json
+{
+  "personal_information": {
+    "personal_information": {
+      "name": "...",
+      "gender": "...",
+      "age": "...",
+      "civil_status": "...",
+      "occupation": "...",
+      "current_residence": "...",
+      "work_location": "...",
+      "email_address": "...",
+      "mobile_number": "...",
+      "how_many_guests": "..."
+    },
+    "other_information": {
+      "is_current_buyer": "...",
+      "purpose_of_visit_buyer": "...",
+      "purpose_of_visit_non_buyer": "...",
+      "source": ["...", "..."],
+      "budget": "...",
+      "primary_interest": "...",
+      "secondary_interest": ["...", "..."],
+      "primary_amenities": ["...", "..."],
+      "secondary_amenities": ["...", "...", "..."]
+    }
+  },
+  "survey": {
+    "buying_experience": {
+      "be_knowledge": "...",
+      "be_courtesy": "...",
+      "be_response": "...",
+      "be_appearance": "..."
+    },
+    "site_visit_experience": {
+      "sve_appearance": "...",
+      "sve_attractiveness": "...",
+      "sve_orderliness": "...",
+      "sve_safety": "...",
+      "sve_accessibility": "..."
+    },
+    "showroom_sales_office_model_unit": {
+      "ssomu_cleanliness": "...",
+      "ssomu_safety": "...",
+      "ssomu_completeness": "...",
+      "ssomu_accessibility": "...",
+      "ssomu_comfort": "..."
+    },
+    "product": {
+      "p_design": "...",
+      "p_finishes": "...",
+      "p_sizes": "...",
+      "p_amenities": "...",
+      "p_pricing": "...",
+      "p_available": "..."
+    },
+    "home_buying_decision": {
+      "hbd_how": "...",
+      "hbd_how_testimonial": "...",
+      "hbd_when": "...",
+      "hbd_if_not_purchasing": ["...", "..."],
+      "hbd_recommend": "...",
+      "hbd_recommend_testimonial": "..."
+    }
+  },
+  "meta": {
+    "timestamp": 1530006374,
+    "showroom": "Amaia Skies Shaw"
+  }
+}
+```
