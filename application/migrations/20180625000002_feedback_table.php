@@ -24,6 +24,11 @@ class Migration_feedback_table extends CI_Migration {
         'null' => true,
         'default' => null,
         'comment' => 'FK from survey table'
+      ),
+      'showroom' => array(
+        'type' => 'VARCHAR',
+        'null' => false,
+        'comment' => 'Which showroom this feedback form is from'
       )
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
