@@ -66,11 +66,6 @@ class Migration_personal_information_table extends CI_Migration {
         'constraint' => '200',
         'null' => false
       ),
-      'is_current_buyer' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false
-      ),
       'purpose_of_visit_buyer' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',

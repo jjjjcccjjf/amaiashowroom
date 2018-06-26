@@ -178,7 +178,7 @@ Status 200 OK
 ### Sync
 #### Sync feedback forms from mobile
 `POST /sync/`  
-##### Parameters  
+##### Request
 **Headers:** `Content-Type: application/json`
 ```json
 {
@@ -250,4 +250,10 @@ Status 200 OK
     "showroom": "Amaia Skies Shaw"
   }
 }
+```
+
+##### Response
+```json
+Status 201 Created
+// todo
 ```

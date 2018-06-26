@@ -137,7 +137,7 @@ class Migration_survey_table extends CI_Migration {
         'constraint' => '200',
         'null' => false
       ),
-      'hbd_if' => array(
+      'hbd_if_not_purchasing' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
         'null' => false,
