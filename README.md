@@ -5,14 +5,16 @@
 
 ## Overview
 1. [API Documentation](#api-documentation)
-    + Authentication Type
-    + Pagination
-    + Ordering
+  1. Authentication Type
+  1. Pagination
+  1. Ordering
 1. [API Endpoints](#api-endpoints)
+  1. Options
+  1. Sync
 
 ## API documentation
 #### API URLs
-Development URL: http://amaiashowroom.betaprojex.com/  
+Development URL: http://amaiashowroom.betaprojex.com/api/  
 Production URL: tbd
 
 ####   Authentication Type
