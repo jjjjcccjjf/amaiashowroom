@@ -5,9 +5,9 @@
 
 ## Overview
 1. [API Documentation](#api-documentation)
-  + Authentication Type
-  + Pagination
-  + Ordering
+    + Authentication Type
+    + Pagination
+    + Ordering
 1. [API Endpoints](#api-endpoints)
 
 ## API documentation
