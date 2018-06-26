@@ -17,7 +17,7 @@ class Options_model extends Crud_model
     'Further away (over 1 hr away)'];
     $this->how_many_guests = ['1', '2', '3', '4', '5+'];
 
-    # Survey stuffs
+    # Other information
     $this->buyer = ['To view my home',
     'To know the inclusions of my purchase',
     'To get real-time information on the project',
@@ -72,8 +72,8 @@ class Options_model extends Crud_model
   public function all()
   {
     return (object)[
-      'personal-information' => $this->getPersonalInformation(),
-      'survey' => $this->getSurvey()
+      'personal_information' => $this->getPersonalInformation(),
+      'other_information' => $this->getOtherInformation()
     ];
   }
 
@@ -81,28 +81,28 @@ class Options_model extends Crud_model
   {
     return (object) [
       'age' => $this->age,
-      'civil-status' => $this->civil_status,
+      'civil_status' => $this->civil_status,
       'occupation' => $this->occupation,
-      'current-residence' => $this->current_residence,
-      'work-location' => $this->work_location,
-      'how-many-guests' => $this->how_many_guests
+      'current_residence' => $this->current_residence,
+      'work_location' => $this->work_location,
+      'how_many_guests' => $this->how_many_guests
     ];
   }
 
-  public function getSurvey()
+  public function getOtherInformation()
   {
     return (object) [
-      'purpose-of-visit' => (object) [
+      'purpose_of_visit' => (object) [
         'buyer' => $this->getPurposeOfVisit('buyer'),
-        'non-buyer' => $this->getPurposeOfVisit('non-buyer')
+        'non_buyer' => $this->getPurposeOfVisit('non_buyer')
       ],
       'budget' => $this->budget,
       'projects' => (object) [
-        'house-and-lot' => $this->getProjects('house-and-lot'),
-        'mid-rise' => $this->getProjects('mid-rise'),
-        'high-rise' => $this->getProjects('high-rise')
+        'house_and_lot' => $this->getProjects('house_and_lot'),
+        'mid_rise' => $this->getProjects('mid_rise'),
+        'high_rise' => $this->getProjects('high_rise')
       ],
-      'when-reserve' => $this->when_reserve
+      'when_reserve' => $this->when_reserve
     ];
   }
 
@@ -114,8 +114,8 @@ class Options_model extends Crud_model
       return $this->buyer;
       break;
 
-      # Default to non-buyer
-      case 'non-buyer':
+      # Default to non_buyer
+      case 'non_buyer':
       default:
       return $this->non_buyer;
       break;
@@ -126,16 +126,16 @@ class Options_model extends Crud_model
   {
     switch ($type) {
 
-      case 'house-and-lot':
+      case 'house_and_lot':
       return $this->house_and_lot;
       break;
 
-      case 'mid-rise':
+      case 'mid_rise':
       return $this->mid_rise;
       break;
 
-      # Default to high-rise
-      case 'high-rise':
+      # Default to high_rise
+      case 'high_rise':
       default:
       return $this->high_rise;
       break;
