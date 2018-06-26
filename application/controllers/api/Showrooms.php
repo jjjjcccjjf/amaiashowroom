@@ -17,6 +17,7 @@ class Showrooms extends \Restserver\Libraries\REST_Controller
     $showrooms[] = $this->options_model->getProjects('high-rise');
 
     $res = array_merge(...$showrooms); # array unpack operator
+    $res = array_unique($res);
     sort($res);
     $this->response($res, 200);
   }

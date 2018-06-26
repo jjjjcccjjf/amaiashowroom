@@ -136,10 +136,10 @@ Status 200 OK
       ]
     },
     "when-reserve": [
-      "Amaia Skies Avenida",
-      "Amaia Skies Cubao",
-      "Amaia Skies Shaw",
-      "Amaia Skies Sta. Mesa"
+      "Within this week",
+      "Within a month",
+      "Within six months",
+      "Within a year"
     ]
   }
 }

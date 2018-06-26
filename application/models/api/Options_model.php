@@ -63,10 +63,10 @@ class Options_model extends Crud_model
     'Amaia Skies Cubao',
     'Amaia Skies Shaw',
     'Amaia Skies Sta. Mesa'];
-    $this->when_reserve = ['Amaia Skies Avenida',
-    'Amaia Skies Cubao',
-    'Amaia Skies Shaw',
-    'Amaia Skies Sta. Mesa'];
+    $this->when_reserve = ['Within this week',
+    'Within a month',
+    'Within six months',
+    'Within a year'];
   }
 
   public function all()
