@@ -177,9 +177,9 @@ Status 200 OK
     }
 }
 ```
-
+### Password
 #### Get the password for API  
-Base 64 encoded password string
+Base 64 encoded password string  
 `GET /options/password/`
 ```json
 {
