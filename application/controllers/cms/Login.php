@@ -7,7 +7,7 @@ class Login extends Admin_core_controller {
   {
     parent::__construct();
 
-    $this->load->model('cms/login_model', 'login');
+    $this->load->model('login_model');
   }
 
   public function index()
@@ -36,7 +36,7 @@ class Login extends Admin_core_controller {
     $email = $this->input->post('email');
     $password = $this->input->post('password');
 
-    $res = $this->login->getByEmail($email);
+    $res = $this->login_model->getByEmail($email);
     if($res && password_verify($password, $res->password)){
       $this->session->set_userdata(['role' => 'administrator', 'id' => $res->id, 'name' => $res->name]);
       redirect('cms/admin');

@@ -7,7 +7,7 @@ class Admin extends Admin_core_controller {
   {
     parent::__construct();
 
-    $this->load->model('cms/admin_model', 'admin_model');
+    $this->load->model('admin_model');
   }
 
   public function index()

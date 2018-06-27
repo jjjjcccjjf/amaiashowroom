@@ -6,7 +6,7 @@ class Showrooms extends \Restserver\Libraries\REST_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('api/options_model', 'options_model');
+    $this->load->model('options_model');
   }
 
   public function index_get()

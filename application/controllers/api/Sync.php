@@ -6,10 +6,10 @@ class Sync extends \Restserver\Libraries\REST_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('api/feedback_model', 'feedback_model');
-    $this->load->model('api/personal_information_model', 'personal_information_model');
-    $this->load->model('api/survey_model', 'survey_model');
-    $this->load->model('api/sync_model', 'sync_model');
+    $this->load->model('feedback_model');
+    $this->load->model('personal_information_model');
+    $this->load->model('survey_model');
+    $this->load->model('sync_model');
   }
 
   public function index_get()
