@@ -10,6 +10,7 @@
     1. Ordering
 1. [API Endpoints](#api-endpoints)
     1. [Options](#options)
+        1. [Password](#password)
     1. [Showrooms](#showrooms)
     1. [Sync](#sync)
 
@@ -174,6 +175,15 @@ Status 200 OK
             "Others"
         ]
     }
+}
+```
+
+#### Get the password for API  
+Base 64 encoded password string
+`GET /options/password/`
+```json
+{
+    "password": "OE5TYUshOT1NfWEoey0xOE5xOSR7dlkteyNaPFdIN0tES2hyKEkqXnlzc3x6eyE8TFsvIkJOSUBVKDU/QCNo"
 }
 ```
 

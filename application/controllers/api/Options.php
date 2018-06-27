@@ -20,4 +20,9 @@ class Options extends \Restserver\Libraries\REST_Controller
     $this->response($res, 200);
   }
 
+  public function password_get()
+  {
+    $this->response(['password' => base64_encode(getenv('API_ADMIN_PASSWORD'))] , 200);
+  }
+
 }
