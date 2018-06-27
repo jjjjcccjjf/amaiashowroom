@@ -3,10 +3,10 @@ $(document).ready(function() {
 });
 
 function invokeForm(path, parameters) {
-  var form = $('<form></form>');
+  var invokedForm = $('<form></form>');
 
-  form.attr("method", "post");
-  form.attr("action", path);
+  invokedForm.attr("method", "post");
+  invokedForm.attr("action", path);
 
   $.each(parameters, function(key, value) {
     var field = $('<input></input>');
@@ -15,13 +15,13 @@ function invokeForm(path, parameters) {
     field.attr("name", key);
     field.attr("value", value);
 
-    form.append(field);
+    invokedForm.append(field);
   });
 
   // The form needs to be a part of the document in
   // order for us to be able to submit it.
-  $(document.body).append(form);
-  form.submit();
+  $(document.body).append(invokedForm);
+  invokedForm.submit();
 }
 
 /**

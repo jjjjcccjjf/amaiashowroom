@@ -17,7 +17,11 @@ class Login extends Admin_core_controller {
 
   public function login()
   {
-    $this->load->view('cms/login');
+    if (isset($this->session->role)) {
+      redirect('cms/admin');
+    } else {
+      $this->load->view('cms/login');
+    }
   }
 
   public function logout()

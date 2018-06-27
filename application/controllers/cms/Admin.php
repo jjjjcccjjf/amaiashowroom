@@ -13,7 +13,6 @@ class Admin extends Admin_core_controller {
   public function index()
   {
     $res = $this->admin_model->all();
-
     $data['res'] = $res;
     $this->wrapper('cms/index', $data);
   }
@@ -26,7 +25,7 @@ class Admin extends Admin_core_controller {
       $this->session->set_flashdata('flash_msg', ['message' => 'Error adding user. Email already exists.', 'color' => 'red']);
     }
 
-    $this->admin_redirect('admin');
+    $this->admin_redirect('cms/admin');
   }
 
   public function update($id)
@@ -37,10 +36,10 @@ class Admin extends Admin_core_controller {
       $this->session->set_flashdata('flash_msg', ['message' => 'Error updating item', 'color' => 'red']);
     }
 
-    $this->admin_redirect('admin');
+    $this->admin_redirect('cms/admin');
   }
 
-  public function delete($id)
+  public function delete()
   {
     if($this->admin_model->delete($this->input->post('id'))){
       $this->session->set_flashdata('flash_msg', ['message' => 'Item deleted successfully', 'color' => 'green']);
@@ -48,7 +47,7 @@ class Admin extends Admin_core_controller {
       $this->session->set_flashdata('flash_msg', ['message' => 'Error deleting item', 'color' => 'red']);
     }
 
-    $this->admin_redirect('admin');
+    $this->admin_redirect('cms/admin');
   }
 
 }

@@ -40,7 +40,7 @@ class Admin_core_model extends CI_model {
   public function deleteUploadedMedia($id)
   {
     $this->db->where('id', $id);
-    $path = "{$this->upload_dir}/" . $this->db->get($this->table)->row()->image_url;
+    $path = "{$this->upload_dir}/" . @$this->db->get($this->table)->row()->image_url;
 
     $file_deleted = false;
 
