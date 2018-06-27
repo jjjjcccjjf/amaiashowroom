@@ -183,7 +183,7 @@ Base 64 encoded password string
 `GET /options/password/`
 ```json
 {
-    "password": "OE5TYUshOT1NfWEoey0xOE5xOSR7dlkteyNaPFdIN0tES2hyKEkqXnlzc3x6eyE8TFsvIkJOSUBVKDU/QCNo"
+    "password": "c2hvd3Jvb21hcHA="
 }
 ```
 
