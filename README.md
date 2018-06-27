@@ -80,15 +80,31 @@ Status 200 OK
                 "To know the inclusions of my purchase",
                 "To get real-time information on the project",
                 "To get inspired by interior design of the model units",
-                "To get a feel of the environment"
+                "To get a feel of the environment",
+                "Others"
             ],
             "non_buyer": [
                 "I plan to purchase an Amaia unit and just need more information",
                 "To see whether this would fit my immediate requirements for a home",
                 "To get ideas for my future home",
-                "Just curious about the new developments in my community"
+                "Just curious about the new developments in my community",
+                "Others"
             ]
         },
+        "source": [
+            "Amaia website",
+            "Online articles",
+            "Blogs",
+            "Social media sites (e.g. Facebook)",
+            "Property listing (e.g. Property 24)",
+            "Recommendations from family or friends",
+            "Exhibit/booth at mall or elsewhere",
+            "Magazines/newspapers",
+            "Billboards, streamers",
+            "Flyers, brochures",
+            "Saw the actual site",
+            "Others"
+        ],
         "budget": [
             "Below 1M",
             "1M-1.9M",
@@ -135,11 +151,27 @@ Status 200 OK
                 "Amaia Skies Sta. Mesa"
             ]
         },
+        "amenities": [
+            "Kids Playground",
+            "Pocket parks/open spaces",
+            "Swimming pool",
+            "Clubhouse/function rooms",
+            "Basketball court",
+            "Soccer field",
+            "Volleyball court",
+            "Badminton/tennis court",
+            "Gym",
+            "Retail Shops",
+            "Game room",
+            "Study hall",
+            "Others"
+        ],
         "when_reserve": [
             "Within this week",
             "Within a month",
             "Within six months",
-            "Within a year"
+            "Within a year",
+            "Others"
         ]
     }
 }

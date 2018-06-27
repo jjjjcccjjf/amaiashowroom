@@ -22,11 +22,25 @@ class Options_model extends Crud_model
     'To know the inclusions of my purchase',
     'To get real-time information on the project',
     'To get inspired by interior design of the model units',
-    'To get a feel of the environment'];
+    'To get a feel of the environment',
+    'Others'];
     $this->non_buyer = ['I plan to purchase an Amaia unit and just need more information',
     'To see whether this would fit my immediate requirements for a home',
     'To get ideas for my future home',
-    'Just curious about the new developments in my community'];
+    'Just curious about the new developments in my community',
+    'Others'];
+    $this->source = ['Amaia website',
+    'Online articles',
+    'Blogs',
+    'Social media sites (e.g. Facebook)',
+    'Property listing (e.g. Property 24)',
+    'Recommendations from family or friends',
+    'Exhibit/booth at mall or elsewhere',
+    'Magazines/newspapers',
+    'Billboards, streamers',
+    'Flyers, brochures',
+    'Saw the actual site',
+    'Others'];
     $this->budget = ['Below 1M',
     '1M-1.9M',
     '2M-2.9M',
@@ -63,10 +77,24 @@ class Options_model extends Crud_model
     'Amaia Skies Cubao',
     'Amaia Skies Shaw',
     'Amaia Skies Sta. Mesa'];
+    $this->amenities = ['Kids Playground',
+    'Pocket parks/open spaces',
+    'Swimming pool',
+    'Clubhouse/function rooms',
+    'Basketball court',
+    'Soccer field',
+    'Volleyball court',
+    'Badminton/tennis court',
+    'Gym',
+    'Retail Shops',
+    'Game room',
+    'Study hall',
+    'Others'];
     $this->when_reserve = ['Within this week',
     'Within a month',
     'Within six months',
-    'Within a year'];
+    'Within a year',
+    'Others'];
   }
 
   public function all()
@@ -96,12 +124,14 @@ class Options_model extends Crud_model
         'buyer' => $this->getPurposeOfVisit('buyer'),
         'non_buyer' => $this->getPurposeOfVisit('non_buyer')
       ],
+      'source' => $this->source,
       'budget' => $this->budget,
       'projects' => (object) [
         'house_and_lot' => $this->getProjects('house_and_lot'),
         'mid_rise' => $this->getProjects('mid_rise'),
         'high_rise' => $this->getProjects('high_rise')
       ],
+      'amenities' => $this->amenities,
       'when_reserve' => $this->when_reserve
     ];
   }

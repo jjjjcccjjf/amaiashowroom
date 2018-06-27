@@ -27,6 +27,7 @@ class Migration_feedback_table extends CI_Migration {
       ),
       'showroom' => array(
         'type' => 'VARCHAR',
+        'constraint' => '200',
         'null' => false,
         'comment' => 'Which showroom this feedback form is from'
       )
