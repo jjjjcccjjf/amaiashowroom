@@ -136,7 +136,7 @@ class Crud_model extends CI_model
   public function get($id)
   {
     $this->db->where('id', $id);
-    return $this->db->get($this->table)->result();
+    return $this->db->get($this->table)->row();
   }
 
   /**

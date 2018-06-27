@@ -26,7 +26,8 @@ class Sync extends \Restserver\Libraries\REST_Controller
       # if timestamp exists in the database
       # update
     } else {
-      $res = $this->sync_model->add($data);
+      $last_id = $this->sync_model->add($data);
+      $res = $this->feedback_model->get($last_id);
       $this->response($res, 201);
     }
   }

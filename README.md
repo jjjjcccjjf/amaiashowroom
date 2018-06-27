@@ -287,5 +287,13 @@ Status 200 OK
 ##### Response
 ```json
 Status 201 Created
-// todo
+{
+    "id": "1",
+    "timestamp": "1530006374",
+    "personal_information_id": "1",
+    "survey_id": "1",
+    "showroom": "Amaia Skies Shaw",
+    "created_at": "2018-06-26 22:36:21",
+    "updated_at": "0000-00-00 00:00:00"
+}
 ```
