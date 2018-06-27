@@ -8,7 +8,7 @@
   <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
   <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
 
-  <title>CMS Login</title>
+  <title>Amaiashowroom CMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url('public/admin/') ?>css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     padding: 0;
     height: 100%;
     background-color: #434343;
-    background-image:linear-gradient(#434343, #282828);
+    background-image:linear-gradient(#91f791, #061642);
   }
   #content{
     background-color: transparent;
@@ -58,7 +58,7 @@
 <body class="login-body">
   <div class="container">
     <form class="form-signin" method="post" action="<?php echo base_url('cms/login/attempt') ?>">
-      <h2 class="form-signin-heading" style="background: dimgray;"> CMS LOGIN
+      <h2 class="form-signin-heading" style="background: #3b6c60;"> Amaiashowroom CMS
         <!-- <img src="" alt=""
         style="max-height:80px;"> -->
       </h2>
@@ -68,7 +68,7 @@
         <?php if ($login_msg = $this->session->login_msg): ?>
           <p style="color: <?php echo $login_msg['color'] ?>"><?php echo $login_msg['message'] ?></p>
         <?php endif; ?>
-        <button style="background: dimgray; box-shadow: 0px 4px #908f8f"
+        <button style="background: #488268; box-shadow: 0px 4px #908f8f"
         class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
       </div>
     </form>
