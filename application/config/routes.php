@@ -60,7 +60,7 @@ $route['translate_uri_dashes'] = FALSE;
 */
 
 # name of route, url, etc. -------------------- controller path #
-$route['cms'] = 'cms/dashboard';
+$route['cms'] = 'cms/admin';
 
 # My routes
 $route['api/example/(:num)'] = 'api/example/single/$1';

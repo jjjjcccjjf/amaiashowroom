@@ -32,21 +32,28 @@
       <ul class="sidebar-menu" id="nav-accordion">
         <li>
           <a href="<?php echo base_url('cms') ?>"
-            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'dashboard') ? 'active': ''; ?>">
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'admin') ? 'active': ''; ?>">
             <i class="fa fa-dashboard"></i>
             <span>Admin Management</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url('cms') ?>"
+            class="<?php echo $this->uri->segment(1) === 'cms' && ( $this->uri->segment(2) === 'feedbacks') ? 'active': ''; ?>">
+            <i class="fa fa-book"></i>
+            <span>Feedbacks</span>
           </a>
         </li>
         <li class="sub-menu">
 
           <a href="javascript:;" class="<?php echo (in_array($this->uri->segment(2), ['news', 'events', 'about']))  ? 'active': ''; ?>">
-            <i class="fa fa-tasks"></i>
-            <span>Portal Management</span>
+            <i class="fa fa-folder-open-o"></i>
+            <span>Reports</span>
           </a>
           <ul class="sub" >
-            <li><a <?php echo $this->uri->segment(2) === 'news' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/news') ?>">News</a></li>
-            <li><a <?php echo $this->uri->segment(2) === 'events' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/events') ?>">Events</a></li>
-            <li><a <?php echo $this->uri->segment(2) === 'about' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/about') ?>">About</a></li>
+            <li><a <?php echo $this->uri->segment(2) === 'news' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/news') ?>">Registrations</a></li>
+            <li><a <?php echo $this->uri->segment(2) === 'events' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/events') ?>">Visits per showroom</a></li>
+            <li><a <?php echo $this->uri->segment(2) === 'about' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/about') ?>">Projects interested in</a></li>
           </ul>
         </li>
       </ul>
