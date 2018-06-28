@@ -38,7 +38,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('cms') ?>"
+          <a href="<?php echo base_url('cms/feedbacks') ?>"
             class="<?php echo $this->uri->segment(1) === 'cms' && ( $this->uri->segment(2) === 'feedbacks') ? 'active': ''; ?>">
             <i class="fa fa-book"></i>
             <span>Feedbacks</span>

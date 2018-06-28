@@ -8,13 +8,16 @@ class Feedbacks extends Admin_core_controller {
     parent::__construct();
 
     $this->load->model('feedback_model');
+    $this->load->model('personal_information_model');
+    $this->load->model('survey_model');
+    $this->load->model('sync_model');
   }
 
   public function index()
   {
-    $res = $this->admin_model->all();
+    $res = $this->sync_model->all();
     $data['res'] = $res;
-    $this->wrapper('cms/index', $data);
+    $this->wrapper('cms/feedbacks', $data);
   }
 
 

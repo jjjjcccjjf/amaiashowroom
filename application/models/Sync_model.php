@@ -11,6 +11,24 @@ class Sync_model extends Crud_model
     $this->load->model('survey_model', 'survey_model');
   }
 
+  public function all()
+  {
+    $query_result = $this->db->query('
+    SELECT * FROM feedback
+    LEFT JOIN personal_information ON feedback.personal_information_id = personal_information.id
+    LEFT JOIN survey ON feedback.survey_id = survey.id
+    ORDER BY feedback.id DESC')->result();
+
+    $res = [];
+    # Format our whole result
+    foreach ($query_result as $key => $value) {
+      $value->timestamp_f = date("F j, Y, g:i a", $value->timestamp);
+      $res[] =  $value;
+    }
+
+    return $res;
+  }
+
   public function add($data)
   {
     # insert to personal_information and to survey first
