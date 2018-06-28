@@ -26,7 +26,7 @@
                         </a>
                       </li>
                       <li class="">
-                        <a href="#recent" data-toggle="tab">
+                        <a href="#survey" data-toggle="tab">
                           Survey
                         </a>
                       </li>
@@ -37,7 +37,6 @@
                       <div class="tab-pane active" id="personal_information">
 
                         <?php foreach ($res->personal_information as $key => $value): ?>
-
                           <article class="media">
                             <div class="media-body">
                               <a class=" p-head" href="#"><?php echo $key ?></a>
@@ -51,7 +50,6 @@
                       <div class="tab-pane" id="other_information">
 
                         <?php foreach ($res->other_information as $key => $value): ?>
-
                           <article class="media">
                             <div class="media-body">
                               <a class=" p-head" href="#"><?php echo $key ?></a>
@@ -68,8 +66,28 @@
 
 
                       </div>
-                      <div class="tab-pane " id="recent">
-                        Recent Item goes here
+                      <div class="tab-pane " id="survey">
+
+                        <?php foreach ($res->survey as $skey => $svalue): ?>
+                          <article class="media">
+                            <a class="pull-left thumb p-thumb">
+                              <?php echo $key ?>
+                            </a>
+                            <div class="media-body">
+                            <?php foreach ($svalue as $key => $value): ?>
+                                <a class=" p-head" href="#"><?php echo $key ?></a>
+                                <p>
+                                  <?php if (is_array($value)){
+                                    echo implode(', ', $value);
+                                  } else {
+                                    echo $value;
+                                  } ?>
+                                </p>
+                            <?php endforeach; ?>
+                          </div>
+                          </article>
+                        <?php endforeach; ?>
+
                       </div>
                     </div>
                   </div>

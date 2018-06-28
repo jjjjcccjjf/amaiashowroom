@@ -58,7 +58,7 @@ class Sync_model extends Crud_model
     $res = (object) [
       'personal_information' => $this->personal_information_model->getPersonalInformation($id),
       'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($id)),
-      'survey' => $this->explodeValues($this->survey_model->get($feedback->survey_id)),
+      'survey' => $this->nestSurvey($this->explodeValues($this->survey_model->get($feedback->survey_id)))
     ];
 
     return $res;
@@ -74,6 +74,39 @@ class Sync_model extends Crud_model
     }
 
     return $exploded_arr;
+  }
+
+  public function nestSurvey($arr)
+  {
+    $buying_experience = [];
+    $site_visit_experience = [];
+    $showroom_sales_office_model_unit = [];
+    $product = [];
+    $home_buying_decision = [];
+
+    foreach($arr as $key => $value) {
+      if(preg_match('/^be_/', $key)) {
+        $buying_experience[$key] = $value;
+      } elseif (preg_match('/^sve_/', $key)) {
+        $site_visit_experience[$key] = $value;
+      } elseif (preg_match('/^ssomu_/', $key)) {
+        $showroom_sales_office_model_unit[$key] = $value;
+      } elseif (preg_match('/^p_/', $key)) {
+        $product[$key] = $value;
+      } elseif (preg_match('/^hbd_/', $key)) {
+        $home_buying_decision[$key] = $value;
+      }
+    }
+
+    $survey = (object) [
+      'buying_experience' => $buying_experience,
+      'site_visit_experience' => $site_visit_experience,
+      'showroom_sales_office_model_unit' => $showroom_sales_office_model_unit,
+      'product' => $product,
+      'home_buying_decision' => $home_buying_decision
+    ];
+
+    return $survey;
   }
 
   public function add($data)
