@@ -29,6 +29,7 @@ class Feedbacks extends Admin_core_controller {
   {
     $res = $this->sync_model->get($id, 'obj'); # Calls a different version of get
     $data['res'] = $res;
+    $data['questions'] = $this->sync_model->questions;
     $this->wrapper('cms/single_feedback', $data);
   }
 

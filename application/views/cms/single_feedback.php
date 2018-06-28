@@ -1,5 +1,8 @@
-<?php #var_dump($res); die(); ?>
-
+<style>
+.meta-info span {
+  font-weight: bold;
+}
+</style>
 <section id="main-content">
   <section class="wrapper">
     <!-- page start-->
@@ -12,6 +15,15 @@
               <a href="<?php echo base_url('cms/feedbacks?from_page=') . $this->input->get('from_page') ?>">
                 &laquo; Back to list of feedbacks
               </a>
+            </p>
+            <hr>
+            <h4>
+              Meta Information
+            </h4>
+            <p class='meta-info'>
+              <span>Showroom</span>: <?php echo $res->meta->showroom ?> <br>
+              <span>Date submitted</span>: <?php echo $res->meta->timestamp_f ?> <br>
+              <!-- <span>Date synced</span>: <?php echo $res->meta->created_at_f ?> -->
             </p>
           </header>
           <div class="panel-body">
@@ -48,7 +60,7 @@
                         <?php foreach ($res->personal_information as $key => $value): ?>
                           <article class="media">
                             <div class="media-body">
-                              <a class=" p-head" href="#"><?php echo $key ?></a>
+                              <a class=" p-head" href="#"><?php echo $questions[$key] ?></a>
                               <p><?php echo $value ?></p>
                             </div>
                           </article>
@@ -61,7 +73,7 @@
                         <?php foreach ($res->other_information as $key => $value): ?>
                           <article class="media">
                             <div class="media-body">
-                              <a class=" p-head" href="#"><?php echo $key ?></a>
+                              <a class=" p-head" href="#"><?php echo $questions[$key] ?></a>
                               <p>
                                 <?php if (is_array($value)){
                                   echo implode(', ', $value);
@@ -79,13 +91,14 @@
 
                         <div class="tab-pane " id="survey">
                           <?php foreach ($res->survey as $skey => $svalue): ?>
+                            <h4>
+                              <?php echo $questions[$skey] ?>
+                            </h4>
+
                             <article class="media">
-                              <a class="pull-left thumb p-thumb">
-                                <?php echo $key ?>
-                              </a>
                               <div class="media-body">
                                 <?php foreach ($svalue as $key => $value): ?>
-                                  <a class=" p-head" href="#"><?php echo $key ?></a>
+                                  <a class=" p-head" href="#"><?php echo $questions[$key] ?></a>
                                   <p>
                                     <?php if (is_array($value)){
                                       echo implode(', ', $value);

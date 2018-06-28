@@ -9,6 +9,68 @@ class Sync_model extends Crud_model
     $this->load->model('feedback_model', 'feedback_model');
     $this->load->model('personal_information_model', 'personal_information_model');
     $this->load->model('survey_model', 'survey_model');
+
+    $this->questions = [
+      # personal information
+      'name' => 'Name',
+      'gender' => 'Gender',
+      'age' => 'Age',
+      'civil_status' => 'Civil status',
+      'occupation' => 'Occupation',
+      'current_residence' => 'Current residence',
+      'work_location' => 'Work location',
+      'email_address' => 'Email address',
+      'mobile_number' => 'Mobile number',
+      'how_many_guests' => 'How many guests are with you?',
+      # other information
+      'is_current_buyer' => 'Are you a current Amaia buyer?',
+      'purpose_of_visit_buyer' => 'Purpose of visit (if an Amaia buyer)',
+      'purpose_of_visit_non_buyer' => 'Purpose of visit (if NOT an Amaia buyer)',
+      'source' => 'How did you learn about Amaia?',
+      'budget' => 'How much is your budget to invest for a property?',
+      'primary_interest' => 'What project are you most interested in?',
+      'secondary_interest' => 'What other projects are you also interested in, if any?',
+      'primary_amenities' => 'What amenities do you consider as top-priority?',
+      'secondary_amenities' => 'What amenities do you consider secondary?',
+
+      # survey
+
+      'buying_experience' => 'Buying experience',
+      'be_knowledge' => 'Knowledge of seller',
+      'be_courtesy' => 'Courtesy and attitude of the seller',
+      'be_response' => 'Response time of the seller in attending to your needs/concerns',
+      'be_appearance' => 'Appearance and attire of the seller',
+
+      'site_visit_experience' => 'Site visit experience',
+      'sve_appearance' => 'Appearance and orderliness of the site’s main entrance',
+      'sve_attractiveness' => 'Attractiveness and cleanliness of the interiors of the model units',
+      'sve_orderliness' => 'Orderliness of the site’s model block (ie. outside the model units)',
+      'sve_safety' => 'Safety and security at the site and model units',
+      'sve_accessibility' => 'Accessibility/location of the site',
+
+      'showroom_sales_office_model_unit' => 'Showroom/Sales Office/Model Unit' ,
+      'ssomu_cleanliness' => 'Cleanliness and orderliness of the showroom/sales office',
+      'ssomu_safety' => 'Safety and security of the showroom/sales office',
+      'ssomu_completeness' => 'Completeness of information at the showroom/sales office',
+      'ssomu_accessibility' => 'Accessibility/location of the showroom/sales office',
+      'ssomu_comfort' => 'Comfort at the showroom/sales office (eg. temperature, noise levels)',
+
+      'product' => 'Product',
+      'p_design' => 'Design and lay-out of the units/buildings',
+      'p_finishes' => 'Finishes and inclusions of the units',
+      'p_sizes' => 'Sizes of the units',
+      'p_amenities' => 'Amenities (pool, clubhouse/function rooms, playground, etc.)',
+      'p_pricing' => 'Pricing of the units',
+      'p_available' => 'Available payment terms/financing options',
+
+      'home_buying_decision' => 'Home-Buying Decision',
+      'hbd_how' => 'How likely is it that you would recommend this real estate company to others?',
+      'hbd_how_testimonial' => 'Please leave a brief testimonial/feedback (optional)',
+      'hbd_when' => 'When do you intend to reserve?',
+      'hbd_if_not_purchasing' => 'If you do not intend to purchase, what were the reasons for such? (Choose maximum of three)',
+      'hbd_recommend' => 'How likely is it that you would recommend this real estate company to others?',
+      'hbd_recommend_testimonial' => 'Please leave a brief testimonial/feedback (optional):'
+    ];
   }
 
   public function all()
@@ -55,9 +117,14 @@ class Sync_model extends Crud_model
   {
     $feedback = $this->db->get_where('feedback', ['id' => $id])->row();
 
+    # Formatting feedback data
+    $feedback->timestamp_f = date("F j, Y, g:i a", $feedback->timestamp);
+    $feedback->created_at_f  = date("F j, Y, g:i a", strtotime($feedback->created_at));
+
     $res = (object) [
       'personal_information' => $this->personal_information_model->getPersonalInformation($feedback->personal_information_id),
-      'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($feedback->personal_information_id))
+      'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($feedback->personal_information_id)),
+      'meta' => $feedback
     ];
 
     # Survey block
@@ -96,15 +163,15 @@ class Sync_model extends Crud_model
 
     if ($arr) {
       foreach($arr as $key => $value) {
-        if(preg_match('/^be_/', $key)) {
+        if(startsWith($key, 'be_')) {
           $buying_experience[$key] = $value;
-        } elseif (preg_match('/^sve_/', $key)) {
+        } elseif (startsWith($key, 'sve_')) {
           $site_visit_experience[$key] = $value;
-        } elseif (preg_match('/^ssomu_/', $key)) {
+        } elseif (startsWith($key, 'ssomu_')) {
           $showroom_sales_office_model_unit[$key] = $value;
-        } elseif (preg_match('/^p_/', $key)) {
+        } elseif (startsWith($key, 'p_')) {
           $product[$key] = $value;
-        } elseif (preg_match('/^hbd_/', $key)) {
+        } elseif (startsWith($key, 'hbd_')) {
           $home_buying_decision[$key] = $value;
         }
       }
