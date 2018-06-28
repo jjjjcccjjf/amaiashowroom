@@ -32,19 +32,34 @@
                         <td><?php echo $value->showroom ?></td>
                         <td><?php echo $value->timestamp_f ?></td>
                         <td>
-                            <a href="<?php echo base_url('cms/feedbacks/' . $value->id) ?>">
-                              <button type="button" class="btn btn-success btn-xs">View</button>
-                            </a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    <?php else: ?>
-                      <tr>
-                        <td colspan="5" style="text-align:center">Empty table data</td>
+                          <a href="<?php echo base_url('cms/feedbacks/' . $value->id . "?from_page=" . ($this->input->get('page') ?: 1) . "&per_page=" . ($this->input->get('per_page') ?: 10)) ?>">
+                            <button type="button" class="btn btn-success btn-xs">View</button>
+                          </a>
+                        </td>
                       </tr>
-                    <?php endif; ?>
-                  </tbody>
-                </table>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <tr>
+                      <td colspan="5" style="text-align:center">Empty table data</td>
+                    </tr>
+                  <?php endif; ?>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <?php // TODO: improve this ?>
+                <ul class='pagination'>
+                  <?php
+                  $page = $this->input->get('page') ?: 1;
+                  $per_page = $this->input->get('per_page') ?: 10;
+                  for ($i=1; $i <= $total_pages; $i++) { ?>
+                    <li><a
+                      class="<?php echo ($i == $page) ? 'active_lg' : '' ?>"
+                      href="<?php echo base_url('cms/feedbacks')
+                      . "?page=" . $i . "&per_page=" . $per_page ;
+                      ?>"><?php echo $i ?></a></li>
+                    <?php } ?>
+                  </ul>
+                </ul>
               </div>
             </div>
           </section>

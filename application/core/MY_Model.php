@@ -116,6 +116,8 @@ class Crud_model extends CI_model
     # Use `$this->db->reset_query();` on the child class to override these two. Then redeclare them as needed
     // $this->db->order_by('id', 'DESC');
 
+    $this->per_page = $this->input->get('per_page') ?: 10; # Make 10 default $per_page if $per_page is not set
+
     $this->paginate(); # apply pagination to all methods
   }
 
@@ -260,10 +262,20 @@ class Crud_model extends CI_model
   public function paginate()
   {
     if ($this->input->get('page')){
-      $per_page = ($this->input->get('per_page')) ? $this->input->get('per_page') : 10; # Make 10 default $per_page if $per_page is not set
-      $offset = ($_GET['page'] - 1) * $per_page;
-      $this->db->limit($per_page, $offset);
+      $offset = ($this->input->get('page') - 1) * $this->per_page;
+      $this->db->limit($this->per_page, $offset);
     }
+  }
+
+  # String version of paginate
+  public function paginateStr()
+  {
+    $paginate_str = '';
+    if ($this->input->get('page')){
+      $offset = ($this->input->get('page') - 1) * $this->per_page;
+      $paginate_str = "LIMIT $this->per_page OFFSET $offset";
+    }
+    return $paginate_str;
   }
 
   ###########################################

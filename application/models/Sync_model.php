@@ -75,11 +75,12 @@ class Sync_model extends Crud_model
 
   public function all()
   {
+
     $query_result = $this->db->query('
     SELECT * FROM feedback
     LEFT JOIN personal_information ON feedback.personal_information_id = personal_information.id
     LEFT JOIN survey ON feedback.survey_id = survey.id
-    ORDER BY feedback.id DESC')->result();
+    ORDER BY feedback.id DESC ' . $this->paginateStr())->result();
 
     $res = [];
     # Format our whole result
@@ -89,6 +90,17 @@ class Sync_model extends Crud_model
     }
 
     return $res;
+  }
+
+  public function getTotalPages()
+  {
+    $query_result = $this->db->query('
+    SELECT * FROM feedback
+    LEFT JOIN personal_information ON feedback.personal_information_id = personal_information.id
+    LEFT JOIN survey ON feedback.survey_id = survey.id
+    ORDER BY feedback.id DESC ')->result();
+
+    return ceil(count($query_result) / $this->per_page);
   }
 
   # Calls 'full' by default
@@ -159,7 +171,7 @@ class Sync_model extends Crud_model
     $product = [];
     $home_buying_decision = [];
 
-    $survey= []; # Init
+    $survey = []; # Init
 
     if ($arr) {
       foreach($arr as $key => $value) {

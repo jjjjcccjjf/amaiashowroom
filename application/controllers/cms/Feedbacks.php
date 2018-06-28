@@ -17,6 +17,7 @@ class Feedbacks extends Admin_core_controller {
   {
     $res = $this->sync_model->all();
     $data['res'] = $res;
+    $data['total_pages'] = $this->sync_model->getTotalPages();
     $this->wrapper('cms/feedbacks', $data);
   }
 

@@ -12,8 +12,10 @@
           <header class="panel-heading">
             Feedbacks <br>
             <p>
-              <a href="<?php echo base_url('cms/feedbacks?from_page=') . $this->input->get('from_page') ?>">
-                &laquo; Back to list of feedbacks
+              <a href="<?php echo base_url('cms/feedbacks?page=') . $this->input->get('from_page') . "&per_page=" .  $this->input->get('per_page') ?>">
+                <button type="button" class="btn btn-info btn-xs">
+                  &laquo; Back to list of feedbacks
+                </button>
               </a>
             </p>
             <hr>
