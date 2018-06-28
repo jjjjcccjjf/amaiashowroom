@@ -53,13 +53,19 @@ class Sync_model extends Crud_model
   # Returns an formatted version
   public function obj($id)
   {
-    $feedback = $this->db->get_where('feedback', ['id', $id])->row();
+    $feedback = $this->db->get_where('feedback', ['id' => $id])->row();
 
     $res = (object) [
-      'personal_information' => $this->personal_information_model->getPersonalInformation($id),
-      'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($id)),
-      'survey' => $this->nestSurvey($this->explodeValues($this->survey_model->get($feedback->survey_id)))
+      'personal_information' => $this->personal_information_model->getPersonalInformation($feedback->personal_information_id),
+      'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($feedback->personal_information_id))
     ];
+
+    # Survey block
+    $survey = @$this->nestSurvey($this->explodeValues($this->survey_model->get($feedback->survey_id)));
+    if ($survey) {
+      $res->survey = $survey;
+    }
+    # / Survey block
 
     return $res;
   }
@@ -68,9 +74,11 @@ class Sync_model extends Crud_model
   {
     # We format other information for appended shits
     $exploded_arr = [];
-    foreach ($arr as $key => $value) {
-      # Explode if string contains pipe symbol
-      $exploded_arr[$key] = (strpos($value, '|') !== false) ? explode('|', $value) : $value;
+    if ($arr) {
+      foreach ($arr as $key => $value) {
+        # Explode if string contains pipe symbol
+        $exploded_arr[$key] = (strpos($value, '|') !== false) ? explode('|', $value) : $value;
+      }
     }
 
     return $exploded_arr;
@@ -84,27 +92,32 @@ class Sync_model extends Crud_model
     $product = [];
     $home_buying_decision = [];
 
-    foreach($arr as $key => $value) {
-      if(preg_match('/^be_/', $key)) {
-        $buying_experience[$key] = $value;
-      } elseif (preg_match('/^sve_/', $key)) {
-        $site_visit_experience[$key] = $value;
-      } elseif (preg_match('/^ssomu_/', $key)) {
-        $showroom_sales_office_model_unit[$key] = $value;
-      } elseif (preg_match('/^p_/', $key)) {
-        $product[$key] = $value;
-      } elseif (preg_match('/^hbd_/', $key)) {
-        $home_buying_decision[$key] = $value;
+    $survey= []; # Init
+
+    if ($arr) {
+      foreach($arr as $key => $value) {
+        if(preg_match('/^be_/', $key)) {
+          $buying_experience[$key] = $value;
+        } elseif (preg_match('/^sve_/', $key)) {
+          $site_visit_experience[$key] = $value;
+        } elseif (preg_match('/^ssomu_/', $key)) {
+          $showroom_sales_office_model_unit[$key] = $value;
+        } elseif (preg_match('/^p_/', $key)) {
+          $product[$key] = $value;
+        } elseif (preg_match('/^hbd_/', $key)) {
+          $home_buying_decision[$key] = $value;
+        }
       }
+
+      $survey = (object) [
+        'buying_experience' => $buying_experience,
+        'site_visit_experience' => $site_visit_experience,
+        'showroom_sales_office_model_unit' => $showroom_sales_office_model_unit,
+        'product' => $product,
+        'home_buying_decision' => $home_buying_decision
+      ];
     }
 
-    $survey = (object) [
-      'buying_experience' => $buying_experience,
-      'site_visit_experience' => $site_visit_experience,
-      'showroom_sales_office_model_unit' => $showroom_sales_office_model_unit,
-      'product' => $product,
-      'home_buying_decision' => $home_buying_decision
-    ];
 
     return $survey;
   }

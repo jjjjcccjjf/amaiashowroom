@@ -1,3 +1,5 @@
+<?php #var_dump($res); die(); ?>
+
 <section id="main-content">
   <section class="wrapper">
     <!-- page start-->
@@ -5,7 +7,12 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Feedbacks
+            Feedbacks <br>
+            <p>
+              <a href="<?php echo base_url('cms/feedbacks?from_page=') . $this->input->get('from_page') ?>">
+                &laquo; Back to list of feedbacks
+              </a>
+            </p>
           </header>
           <div class="panel-body">
             <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="1">
@@ -25,11 +32,13 @@
                           Other information
                         </a>
                       </li>
-                      <li class="">
-                        <a href="#survey" data-toggle="tab">
-                          Survey
-                        </a>
-                      </li>
+                      <?php if (@$res->survey): ?>
+                        <li class="">
+                          <a href="#survey" data-toggle="tab">
+                            Survey
+                          </a>
+                        </li>
+                      <?php endif; ?>
                     </ul>
                   </header>
                   <div class="panel-body">
@@ -66,29 +75,32 @@
 
 
                       </div>
-                      <div class="tab-pane " id="survey">
+                      <?php if (@$res->survey): ?>
 
-                        <?php foreach ($res->survey as $skey => $svalue): ?>
-                          <article class="media">
-                            <a class="pull-left thumb p-thumb">
-                              <?php echo $key ?>
-                            </a>
-                            <div class="media-body">
-                            <?php foreach ($svalue as $key => $value): ?>
-                                <a class=" p-head" href="#"><?php echo $key ?></a>
-                                <p>
-                                  <?php if (is_array($value)){
-                                    echo implode(', ', $value);
-                                  } else {
-                                    echo $value;
-                                  } ?>
-                                </p>
-                            <?php endforeach; ?>
-                          </div>
-                          </article>
-                        <?php endforeach; ?>
+                        <div class="tab-pane " id="survey">
+                          <?php foreach ($res->survey as $skey => $svalue): ?>
+                            <article class="media">
+                              <a class="pull-left thumb p-thumb">
+                                <?php echo $key ?>
+                              </a>
+                              <div class="media-body">
+                                <?php foreach ($svalue as $key => $value): ?>
+                                  <a class=" p-head" href="#"><?php echo $key ?></a>
+                                  <p>
+                                    <?php if (is_array($value)){
+                                      echo implode(', ', $value);
+                                    } else {
+                                      echo $value;
+                                    } ?>
+                                  </p>
+                                <?php endforeach; ?>
+                              </div>
+                            </article>
+                          <?php endforeach; ?>
 
-                      </div>
+                        </div>
+                      <?php endif; ?>
+
                     </div>
                   </div>
                 </section>
