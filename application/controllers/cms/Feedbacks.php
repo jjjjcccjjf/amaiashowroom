@@ -20,5 +20,17 @@ class Feedbacks extends Admin_core_controller {
     $this->wrapper('cms/feedbacks', $data);
   }
 
+  /**
+   * single page for feedback
+   * @param  [type] $id [description]
+   * @return [type]     [description]
+   */
+  public function single($id)
+  {
+    $res = $this->sync_model->get($id, 'obj'); # Calls a different version of get
+    $data['res'] = $res;
+    $this->wrapper('cms/single_feedback', $data);
+  }
+
 
 }
