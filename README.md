@@ -166,12 +166,32 @@ Status 200 OK
             "Game room",
             "Study hall",
             "Others"
-        ],
+        ]
+    },
+    "survey": {
         "when_reserve": [
             "Within this week",
             "Within a month",
             "Within six months",
             "Within a year",
+            "Others"
+        ],
+        "reasons_for_not_purchase": [
+            "Location of the site (accessibility, safety)",
+            "Orderliness of the site (entrance, main area)",
+            "Design of the units",
+            "Finishing of the units",
+            "Amenities",
+            "Condition of model units",
+            "Condition of showroom/sales office",
+            "Units are too small",
+            "Units are too big",
+            "Cannot afford price/monthly amortization",
+            "Did not reflect description in ad",
+            "Seller was not responsive",
+            "Negative feedback from friends/family",
+            "Preference for another development",
+            "Undecided/unready to purchase a home",
             "Others"
         ]
     }

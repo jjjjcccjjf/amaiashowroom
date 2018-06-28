@@ -90,10 +90,28 @@ class Options_model extends Crud_model
     'Game room',
     'Study hall',
     'Others'];
+
+    # Survey stuffs
     $this->when_reserve = ['Within this week',
     'Within a month',
     'Within six months',
     'Within a year',
+    'Others'];
+    $this->reasons_for_not_purchase = ['Location of the site (accessibility, safety)',
+    'Orderliness of the site (entrance, main area)',
+    'Design of the units',
+    'Finishing of the units',
+    'Amenities',
+    'Condition of model units',
+    'Condition of showroom/sales office',
+    'Units are too small',
+    'Units are too big',
+    'Cannot afford price/monthly amortization',
+    'Did not reflect description in ad',
+    'Seller was not responsive',
+    'Negative feedback from friends/family',
+    'Preference for another development',
+    'Undecided/unready to purchase a home',
     'Others'];
   }
 
@@ -101,7 +119,16 @@ class Options_model extends Crud_model
   {
     return (object)[
       'personal_information' => $this->getPersonalInformation(),
-      'other_information' => $this->getOtherInformation()
+      'other_information' => $this->getOtherInformation(),
+      'survey' => $this->getSurvey()
+    ];
+  }
+
+  public function getSurvey()
+  {
+    return (object) [
+      'when_reserve' => $this->when_reserve,
+      'reasons_for_not_purchase' => $this->reasons_for_not_purchase
     ];
   }
 
@@ -132,7 +159,6 @@ class Options_model extends Crud_model
         'high_rise' => $this->getProjects('high_rise')
       ],
       'amenities' => $this->amenities,
-      'when_reserve' => $this->when_reserve
     ];
   }
 
