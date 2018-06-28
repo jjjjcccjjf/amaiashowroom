@@ -198,12 +198,28 @@ Status 200 OK
 }
 ```
 ### Password
-#### Get the password for API  
-Base 64 encoded password string  
-`GET /options/password/`
+#### Compare server-side stored admin password with the requested password
+`POST /options/password/`  
+
+##### Parameters
+
+|       Key          |       Data type      |       Example      
+| :----------------: | :------------------: | :--------------------:
+|     password       |        String        | supersecretpassword
+##### Success
 ```json
+Status: 200 OK
 {
-    "password": "c2hvd3Jvb21hcHA="
+    "message": "Password matched",
+    "code": "password_matched"
+}
+```
+##### Failure
+```json
+Status: 200 OK
+{
+    "message": "Password mismatch",
+    "code": "password_mismatch"
 }
 ```
 

@@ -20,9 +20,14 @@ class Options extends \Restserver\Libraries\REST_Controller
     $this->response($res, 200);
   }
 
-  public function password_get()
+  public function password_post()
   {
-    $this->response(['password' => base64_encode(getenv('API_ADMIN_PASSWORD'))] , 200);
+    # check to see if the send plaintext password matches our password
+    if ($this->input->post('password') === getenv('API_ADMIN_PASSWORD')) {
+      $this->response(['message' => 'Password matched', 'code' => 'password_matched'], 200);
+    } else {
+      $this->response(['message' => 'Password mismatch', 'code' => 'password_mismatch'], 200);
+    }
   }
 
 }
