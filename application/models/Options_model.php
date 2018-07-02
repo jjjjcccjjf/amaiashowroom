@@ -10,11 +10,11 @@ class Options_model extends Crud_model
     # Personal Information stuffs
     $this->age = ['20s', '30s', '40s', '50s', '60s', '70s above'];
     $this->civil_status = ['Single', 'Married', 'Separated/Widow'];
-    $this->occupation = ['Self-employed', 'Employed', 'Retired'];
+    $this->occupation = ['Self-employed', 'Employed', 'Retired', 'Others'];
     $this->work_location =
     $this->current_residence =
     ['Nearby (< 30mins away)', 'Medium distance (1/2 to 1 hr away)',
-    'Further away (over 1 hr away)'];
+    'Further away (over 1 hr away)', 'Others'];
     $this->how_many_guests = ['1', '2', '3', '4', '5+'];
 
     # Other information
