@@ -22,14 +22,13 @@ class Sync extends \Restserver\Libraries\REST_Controller
     $data = json_decode($this->input->raw_input_stream); # We're getting from a raw post data
 
     # Check if the timestamp exists in the feedback table
-    if($this->feedback_model->checkTsExists($data->meta->timestamp) && false){
-      # if timestamp exists in the database
-      # update
-    } else {
-      $last_id = $this->sync_model->add($data);
-      $res = $this->feedback_model->get($last_id);
-      $this->response($res, 201);
+    # Replace it if it exists
+    if($this->feedback_model->checkTsExists($data->meta->timestamp)){
+      $this->feedback_model->deleteByTimestamp($data->meta->timestamp);
     }
+    $last_id = $this->sync_model->add($data);
+    $res = $this->feedback_model->get($last_id);
+    $this->response($res, 201);
   }
 
 }

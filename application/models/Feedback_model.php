@@ -19,4 +19,10 @@ class Feedback_model extends Crud_model
     return $this->db->get_where($this->table, ['timestamp' => $timestamp])->row();
   }
 
+  public function deleteByTimestamp($timestamp)
+  {
+    $this->db->where('timestamp', $timestamp);
+    return $this->db->delete($this->table);
+  }
+
 }
