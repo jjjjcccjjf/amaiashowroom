@@ -77,7 +77,7 @@ class Sync_model extends Crud_model
   {
 
     $query_result = $this->db->query('
-    SELECT * FROM feedback
+    SELECT personal_information.*, survey.*, feedback.* FROM feedback
     LEFT JOIN personal_information ON feedback.personal_information_id = personal_information.id
     LEFT JOIN survey ON feedback.survey_id = survey.id
     ORDER BY feedback.id DESC ' . $this->paginateStr())->result();
@@ -140,9 +140,11 @@ class Sync_model extends Crud_model
     ];
 
     # Survey block
-    $survey = @$this->nestSurvey($this->explodeValues($this->survey_model->get($feedback->survey_id)));
-    if ($survey) {
-      $res->survey = $survey;
+    if ($feedback->survey_id) {
+      $survey = @$this->nestSurvey($this->explodeValues($this->survey_model->get($feedback->survey_id)));
+      if ($survey) {
+        $res->survey = $survey;
+      }
     }
     # / Survey block
 
