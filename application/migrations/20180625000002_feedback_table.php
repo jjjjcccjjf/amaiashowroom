@@ -44,6 +44,13 @@ class Migration_feedback_table extends CI_Migration {
         'null' => true,
         'default' => null,
         'comment' => 'Timestamp for when the feedback form was ended'
+      ),
+      'generated_code' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '200',
+        'null' => true,
+        'default' => null,
+        'comment' => 'For giveaway stuffs'
       )
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
