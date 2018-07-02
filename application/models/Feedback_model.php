@@ -25,4 +25,27 @@ class Feedback_model extends Crud_model
     return $this->db->delete($this->table);
   }
 
+  /**
+   * get first or last record
+   * @param  [type] $arg [description]
+   * @return [type]      [description]
+   */
+  public function getByCreatedAt($arg)
+  {
+    switch ($arg) {
+      case 'last':
+      $this->db->order_by('created_at', 'DESC');
+      break;
+
+      case 'first':
+      $this->db->order_by('created_at', 'ASC');
+      break;
+      default:
+    }
+
+    $this->db->limit(1);
+    return date('Y-m-d', strtotime($this->db->get($this->table)->row()->created_at));
+
+  }
+
 }
