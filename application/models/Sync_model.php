@@ -222,8 +222,8 @@ class Sync_model extends Crud_model
       'personal_information_id' => $personal_information_id,
       'survey_id' => $survey_id,
       'showroom' => $data->meta->showroom,
-      'survey_start' => $data->meta->survey_start,
-      'survey_end' => $data->meta->survey_end
+      'survey_start' => @$data->meta->survey_start,
+      'survey_end' => @$data->meta->survey_end
     ]);
   }
 

@@ -34,13 +34,15 @@ class Migration_feedback_table extends CI_Migration {
       'survey_start' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
-        'null' => false,
+        'null' => true,
+        'default' => null,
         'comment' => 'Timestamp for when the feedback form was started'
       ),
       'survey_end' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
-        'null' => false,
+        'null' => true,
+        'default' => null,
         'comment' => 'Timestamp for when the feedback form was ended'
       )
     ));
