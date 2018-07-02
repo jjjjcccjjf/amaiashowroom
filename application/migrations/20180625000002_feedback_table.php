@@ -11,7 +11,7 @@ class Migration_feedback_table extends CI_Migration {
       'timestamp' => array(
         'type' => 'varchar',
         'constraint' => '200',
-        'comment' => 'Unique identifier for each feedback form',
+        'comment' => 'Unique identifier for each feedback form. Time saved locally on mobile DB',
         'null' => false
       ),
       'personal_information_id' => array(
@@ -30,6 +30,18 @@ class Migration_feedback_table extends CI_Migration {
         'constraint' => '200',
         'null' => false,
         'comment' => 'Which showroom this feedback form is from'
+      ),
+      'survey_start' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '200',
+        'null' => false,
+        'comment' => 'Timestamp for when the feedback form was started'
+      ),
+      'survey_end' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '200',
+        'null' => false,
+        'comment' => 'Timestamp for when the feedback form was ended'
       )
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");

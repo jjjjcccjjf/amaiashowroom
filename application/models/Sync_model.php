@@ -204,15 +204,24 @@ class Sync_model extends Crud_model
   public function add($data)
   {
     # insert to personal_information and to survey first
+    # should always exist
     $personal_information_id = $this->personal_information_model->add($data->personal_information);
-    $survey_id = $this->survey_model->add($data->survey);
+
+    # optional. if survey exists
+    if ((array)$data->survey && property_exists($data, 'survey')) {
+      $survey_id = $this->survey_model->add($data->survey);
+    } else {
+      $survey_id = null;
+    }
 
     # then try to add to feedback table
     return $this->feedback_model->add([
       'timestamp' => $data->meta->timestamp,
       'personal_information_id' => $personal_information_id,
       'survey_id' => $survey_id,
-      'showroom' => $data->meta->showroom
+      'showroom' => $data->meta->showroom,
+      'survey_start' => $data->meta->survey_start,
+      'survey_end' => $data->meta->survey_end
     ]);
   }
 

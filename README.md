@@ -325,7 +325,9 @@ Status 200 OK
   },
   "meta": {
     "timestamp": 1530006374,
-    "showroom": "Amaia Skies Shaw"
+    "showroom": "Amaia Skies Shaw",
+    "survey_start": 1530006375,
+    "survey_end": 1530006376,
   }
 }
 ```
