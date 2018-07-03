@@ -11,14 +11,14 @@ class Reports_model extends Crud_model
 
   /**
    * [getRegistrationMonths description]
-   * @param  [type] $start_date Y-m-d string
-   * @param  [type] $end_date   Y-m-d string
+   * @param  [type] $from_date Y-m-d string
+   * @param  [type] $to_date   Y-m-d string
    * @return [type]             [description]
    */
-  public function getRegistrationMonths($start_date, $end_date)
+  public function getRegistrationMonths($from_date, $to_date)
   {
-    $start    = (new DateTime($start_date))->modify('first day of this month');
-    $end      = (new DateTime($end_date))->modify('first day of next month');
+    $start    = (new DateTime($from_date))->modify('first day of this month');
+    $end      = (new DateTime($to_date))->modify('first day of next month');
     $interval = DateInterval::createFromDateString('1 month');
     $period   = new DatePeriod($start, $interval, $end);
 
@@ -30,11 +30,11 @@ class Reports_model extends Crud_model
     return $months;
   }
 
-  public function getRegistrationSeries($start_date, $end_date)
+  public function getRegistrationSeries($from_date, $to_date)
   {
     /**/$showrooms = $this->feedback_model->getShowrooms();
 
-    /**/$months = $this->reports_model->getRegistrationMonths($start_date, $end_date);
+    /**/$months = $this->reports_model->getRegistrationMonths($from_date, $to_date);
 
     /**/$series = [];
 

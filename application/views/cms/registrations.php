@@ -5,6 +5,32 @@
   <section class="wrapper site-min-height">
     <!-- page start-->
 
+    <div class="row">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+            Filter by Date range
+          </header>
+          <div class="panel-body">
+            <form class="form-inline" role="form" method="get">
+              <div class="form-group">
+                <label for="">From</label>
+                <input type="month" class="form-control" name="from_date" value="<?php echo $from_date ?>">
+              </div>
+              <div class="form-group">
+                <label for="">to</label>
+              </div>
+              <div class="form-group">
+                <input type="month" class="form-control" name="to_date" value="<?php echo $to_date ?>">
+              </div>
+              <button type="submit" class="btn btn-success">Filter</button>
+            </form>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
     <div id="chart_container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 

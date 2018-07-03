@@ -46,14 +46,13 @@
         </li>
         <li class="sub-menu">
 
-          <a href="javascript:;" class="<?php echo (in_array($this->uri->segment(2), ['news', 'events', 'about']))  ? 'active': ''; ?>">
+          <a href="javascript:;" class="<?php echo (in_array($this->uri->segment(2), ['reports']))  ? 'active': ''; ?>">
             <i class="fa fa-folder-open-o"></i>
             <span>Reports</span>
           </a>
           <ul class="sub" >
-            <li><a <?php echo $this->uri->segment(2) === 'news' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/news') ?>">Registrations</a></li>
-            <li><a <?php echo $this->uri->segment(2) === 'events' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/events') ?>">Visits per showroom</a></li>
-            <li><a <?php echo $this->uri->segment(2) === 'about' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/about') ?>">Projects interested in</a></li>
+            <li><a <?php echo $this->uri->segment(3) === 'registrations' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/reports/registrations') ?>">Registrations</a></li>
+            <li><a <?php echo $this->uri->segment(3) === 'reports' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/about') ?>">Projects interested in</a></li>
           </ul>
         </li>
       </ul>

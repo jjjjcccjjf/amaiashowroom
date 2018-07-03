@@ -20,19 +20,22 @@ class Reports extends Admin_core_controller {
 
   }
 
-  public function registrations($start_date = null, $end_date = null)
+  public function registrations()
   {
 
-    $start_date = $start_date ?: $this->feedback_model->getByCreatedAt('first');
-    $end_date =  $end_date ?: $this->feedback_model->getByCreatedAt('last');
+    $from_date = $this->input->get('from_date') ?: $this->feedback_model->getByCreatedAt('first');
+    $to_date =  $this->input->get('to_date') ?: $this->feedback_model->getByCreatedAt('last');
 
-    $months = $this->reports_model->getRegistrationMonths($start_date, $end_date);
-    $series = $this->reports_model->getRegistrationSeries($start_date, $end_date);
+    $months = $this->reports_model->getRegistrationMonths($from_date, $to_date);
+    $series = $this->reports_model->getRegistrationSeries($from_date, $to_date);
+
+    $data['from_date'] = date('Y-m', strtotime($from_date));
+    $data['to_date'] = date('Y-m', strtotime($to_date));
 
     $data['months_json'] = json_encode($months);
     $data['series_json'] = json_encode($series);
 
-    $this->wrapper('cms/registrations_date_range', $data);
+    $this->wrapper('cms/registrations', $data);
   }
 
   public function registrations_by_showroom()
