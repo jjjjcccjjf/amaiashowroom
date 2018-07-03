@@ -21,6 +21,20 @@ class Feedback_model extends Crud_model
 
   public function deleteByTimestamp($timestamp)
   {
+    $res = $this->db->get_where($this->table, ['timestamp' => $timestamp])->row();
+    $this->db->reset_query();
+
+    # delete from personal information table
+    $this->db->where('id', $res->personal_information_id);
+    $this->db->delete('personal_information');
+    $this->db->reset_query();
+
+    # delete from survey table
+    $this->db->where('id', $res->survey_id);
+    $this->db->delete('survey');
+    $this->db->reset_query();
+
+    # finally, delete from
     $this->db->where('timestamp', $timestamp);
     return $this->db->delete($this->table);
   }
