@@ -1,5 +1,8 @@
 <?php
 
+/**
+* Model for merged feedback, survey, and personal_information
+*/
 class Sync_model extends Crud_model
 {
   public function __construct()
@@ -73,19 +76,41 @@ class Sync_model extends Crud_model
     ];
   }
 
-  public function all()
+  public function allF($from_date, $to_date, $showroom = null, $paginate = true)
   {
+    $where_str = 'WHERE';
+    $paginate_str = '';
 
-    $query_result = $this->db->query('
+    if ($showroom) {
+      $where_str .= " feedback.showroom = '{$showroom} '";
+    }
+    if (($from_date && $to_date) && $showroom) {
+      $where_str .= " AND "; # if both filters are present GODDAMMIT
+    }
+    if ($from_date && $to_date) {
+      $where_str .= " feedback.created_at BETWEEN '$from_date' AND '$to_date'";
+    }
+    # Fallback
+    if ($where_str == 'WHERE') {
+      $where_str = 'WHERE 1';
+    }
+
+    if ($paginate) {
+      $paginate_str = $this->paginateStr();
+    }
+
+    $query_result = $this->db->query("
     SELECT personal_information.*, survey.*, feedback.* FROM feedback
     LEFT JOIN personal_information ON feedback.personal_information_id = personal_information.id
     LEFT JOIN survey ON feedback.survey_id = survey.id
-    ORDER BY feedback.id DESC ' . $this->paginateStr())->result();
+    {$where_str}
+    ORDER BY feedback.id DESC {$paginate_str}")->result(); # paginate if necessary
 
     $res = [];
     # Format our whole result
     foreach ($query_result as $key => $value) {
       $value->timestamp_f = date("F j, Y, g:i a", $value->timestamp);
+      $value->created_at_f = date("F j, Y, g:i a", strtotime($value->created_at));
       $res[] =  $value;
     }
 

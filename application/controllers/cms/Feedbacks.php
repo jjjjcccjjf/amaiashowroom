@@ -19,13 +19,24 @@ class Feedbacks extends Admin_core_controller {
 
   public function index()
   {
-    $res = $this->sync_model->all();
+
+    $from_date = $this->input->get('from_date') ? $this->input->get('from_date') . "-01" : null;
+    $to_date =  $this->input->get('to_date') ? $this->input->get('to_date') . "-31" : null;
+    $showroom = $this->input->get('showroom');
+
+    $res = $this->sync_model->allF($from_date, $to_date, $showroom);
+
+    $data['from_date'] = $from_date ? date('Y-m', strtotime($from_date)) : null;
+    $data['to_date'] = $to_date ? date('Y-m', strtotime($to_date)) : null;
 
     $data['per_page'] = $this->per_page;
     $data['page'] = $this->page;
 
+    $data['showroom'] = $showroom;
+    $data['unique_showrooms'] = $this->feedback_model->getShowrooms();
     $data['res'] = $res;
-    $data['total_pages'] = $this->sync_model->getTotalPages();
+
+    $data['total_pages'] = ceil(count($res = $this->sync_model->allF($from_date, $to_date, $showroom, false)) / $this->per_page);
     $this->wrapper('cms/feedbacks', $data);
   }
 
@@ -41,6 +52,10 @@ class Feedbacks extends Admin_core_controller {
     $data['per_page'] = $this->per_page;
     $data['page'] = $this->page;
     $data['from_page'] = $this->from_page;
+
+    $data['showroom'] = $this->input->get('showroom');
+    $data['from_date'] = $this->input->get('from_date');
+    $data['to_date'] = $this->input->get('to_date');
 
     $data['res'] = $res;
     $data['questions'] = $this->sync_model->questions;

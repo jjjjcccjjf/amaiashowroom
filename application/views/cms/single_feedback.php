@@ -2,6 +2,11 @@
 .meta-info span {
   font-weight: bold;
 }
+.p-head {
+    color: #7087a3;
+    font-weight: bold;
+    font-size: 14px;
+}
 </style>
 <section id="main-content">
   <section class="wrapper">
@@ -12,7 +17,7 @@
           <header class="panel-heading">
             Feedbacks <br>
             <p>
-              <a href="<?php echo base_url("cms/feedbacks?page={$from_page}&per_page={$per_page}")?>">
+              <a href="<?php echo base_url("cms/feedbacks?page={$from_page}&per_page={$per_page}&showroom={$showroom}&from_date={$from_date}&to_date={$to_date}")?>">
                 <button type="button" class="btn btn-info btn-xs">
                   &laquo; Back to list of feedbacks
                 </button>

@@ -64,6 +64,7 @@ class Feedback_model extends Crud_model
 
   public function getShowrooms()
   {
+    $this->db->reset_query();
     $this->db->distinct();
     $this->db->select('showroom');
     $res = $this->db->get($this->table)->result();
