@@ -11,14 +11,7 @@ class Showrooms extends \Restserver\Libraries\REST_Controller
 
   public function index_get()
   {
-    $showrooms = [];
-    $showrooms[] = $this->options_model->getProjects('house_and_lot');
-    $showrooms[] = $this->options_model->getProjects('low_rise');
-    $showrooms[] = $this->options_model->getProjects('high_rise');
-
-    $res = array_merge(...$showrooms); # array unpack operator
-    $res = array_unique($res);
-    sort($res);
+    $res = $this->options_model->getAllProjects();
     $this->response($res, 200);
   }
 

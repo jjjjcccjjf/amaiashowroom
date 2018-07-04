@@ -52,7 +52,7 @@
           </a>
           <ul class="sub" >
             <li><a <?php echo $this->uri->segment(3) === 'registrations' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/reports/registrations') ?>">Registrations</a></li>
-            <li><a <?php echo $this->uri->segment(3) === 'reports' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/about') ?>">Projects interested in</a></li>
+            <li><a <?php echo $this->uri->segment(3) === 'projects-interested-in' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/reports/projects-interested-in') ?>">Projects interested in</a></li>
           </ul>
         </li>
       </ul>

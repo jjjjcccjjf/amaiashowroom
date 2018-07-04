@@ -12,6 +12,7 @@ class Reports extends Admin_core_controller {
     $this->load->model('survey_model');
     $this->load->model('sync_model');
     $this->load->model('reports_model');
+    $this->load->model('options_model');
 
   }
 
@@ -38,9 +39,24 @@ class Reports extends Admin_core_controller {
     $this->wrapper('cms/registrations', $data);
   }
 
-  public function registrations_by_showroom()
+  public function projects_interested_in()
   {
-    // $this->wrapper('cms/registrations_date_range');
+    /**/$projects = $this->options_model->getAllProjects();
+
+    /**/$primary_interests = $this->personal_information_model->getTableField('primary_interest');
+    /**/$secondary_interests = $this->personal_information_model->getTableField('secondary_interest');
+
+
+    $secondary_interests = $this->personal_information_model->spreadArray($secondary_interests);
+
+    $series = [];
+    $series[] = $this->personal_information_model->createInterestsObject($projects, $primary_interests, 'Primary interests');
+    $series[] = $this->personal_information_model->createInterestsObject($projects, $secondary_interests, 'Secondary interests');
+    
+    $data['projects_json'] = json_encode($projects);
+    $data['series_json'] = json_encode($series);
+
+    $this->wrapper('cms/projects_interested_in', $data);
   }
 
 

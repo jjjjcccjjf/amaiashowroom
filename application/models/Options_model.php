@@ -196,6 +196,17 @@ class Options_model extends Crud_model
       return $this->high_rise;
       break;
     }
+  }public function getAllProjects()
+  {
+    $projects = [];
+    $projects[] = $this->options_model->getProjects('house_and_lot');
+    $projects[] = $this->options_model->getProjects('mid_rise');
+    $projects[] = $this->options_model->getProjects('high_rise');
+
+    $res = array_merge(...$projects); # array unpack operator
+    $res = array_unique($res);
+    sort($res);
+    return $res;
   }
 
 

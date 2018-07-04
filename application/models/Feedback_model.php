@@ -58,7 +58,7 @@ class Feedback_model extends Crud_model
     }
 
     $this->db->limit(1);
-    return date('Y-m-d', strtotime($this->db->get($this->table)->row()->created_at));
+    return @date('Y-m-d', strtotime($this->db->get($this->table)->row()->created_at));
 
   }
 

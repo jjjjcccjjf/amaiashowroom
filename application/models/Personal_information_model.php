@@ -7,6 +7,7 @@ class Personal_information_model extends Crud_model
     parent::__construct();
     $this->table = 'personal_information';
 
+    $this->load->model('sync_model');
   }
 
   public function getPersonalInformation($id)
@@ -67,6 +68,60 @@ class Personal_information_model extends Crud_model
     $data = array_merge($personal_information_arr, $other_information_arr);
     $this->db->insert($this->table, $data);
     return $this->db->insert_id();
+  }
+
+  /**
+   * unpack nested arrays(strings) into one big redundant array
+   * @param  [type] $projects [description]
+   * @return [type]           [description]
+   */
+  public function spreadArray($projects)
+  {
+    $res = [];
+
+    foreach ($projects as $key => $value) {
+      $value = (strpos($value, '|') !== false) ? explode('|', $value) : $value;
+      if (is_array($value)) {
+        $res = array_merge($value, $res);
+      } else {
+        $res[] = $value;
+      }
+    }
+
+    return $res;
+  }
+
+  public function getTableField($field)
+  {
+    $this->db->select($field);
+    $rows = $this->db->get($this->table)->result();
+    $res = [];
+    foreach ($rows as $key => $value) {
+      $res[] = $value->$field;
+    }
+
+    return $res;
+  }
+
+  public function createInterestsObject($projects, $interests, $label)
+  {
+    $res = (object) [
+      'name' => $label,
+      'data' => []
+    ];
+
+    foreach ($projects as $k_pr => $project) {
+      $temp = 0;
+      foreach ($interests as $k_in => $interest) {
+        if ($interest == $project) {
+          $temp++;
+        }
+      }
+
+      $res->data[] = $temp;
+    }
+
+    return $res;
   }
 
 }
