@@ -20,14 +20,14 @@ class Feedbacks extends Admin_core_controller {
   public function index()
   {
 
-    $from_date = $this->input->get('from_date') ? $this->input->get('from_date') . "-01" : null;
-    $to_date =  $this->input->get('to_date') ? $this->input->get('to_date') . "-31" : null;
+    $from_date = $this->input->get('from_date') ? $this->input->get('from_date') : null;
+    $to_date =  $this->input->get('to_date') ? $this->input->get('to_date') : null;
     $showroom = $this->input->get('showroom');
 
     $res = $this->sync_model->allF($from_date, $to_date, $showroom);
 
-    $data['from_date'] = $from_date ? date('Y-m', strtotime($from_date)) : null;
-    $data['to_date'] = $to_date ? date('Y-m', strtotime($to_date)) : null;
+    $data['from_date'] = $from_date ?: null;
+    $data['to_date'] = $to_date ?: null;
 
     $data['per_page'] = $this->per_page;
     $data['page'] = $this->page;

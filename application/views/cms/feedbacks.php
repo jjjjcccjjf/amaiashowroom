@@ -28,15 +28,18 @@
               </div>
               <div class="form-group">
                 <label for="">From</label>
-                <input type="month" class="form-control" name="from_date" value="<?php echo @$from_date ?>">
+                <input type="date" class="form-control" name="from_date" value="<?php echo @$from_date ?>">
               </div>
               <div class="form-group">
                 <label for="">to</label>
               </div>
               <div class="form-group">
-                <input type="month" class="form-control" name="to_date" value="<?php echo @$to_date ?>">
+                <input type="date" class="form-control" name="to_date" value="<?php echo @$to_date ?>">
               </div>
               <button type="submit" class="btn btn-success">Filter</button>
+              <a href="<?php echo base_url('cms/feedbacks') ?>">
+                <button type="button" class="btn btn-info">Reset filters</button>
+              </a>
             </form>
 
           </div>
@@ -48,8 +51,8 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Showroom</th>
+                    <th>Synced to server (Date filter applies here)</th>
                     <th>Submit date/time</th>
-                    <th>Synced to server</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -61,8 +64,8 @@
                         <th scope="row"><?php echo $counter--; ?></th>
                         <td><?php echo $value->name ?></td>
                         <td><?php echo $value->showroom ?></td>
-                        <td><?php echo $value->timestamp_f ?></td>
                         <td><?php echo $value->created_at_f ?></td>
+                        <td><?php echo $value->timestamp_f ?></td>
                         <td>
                           <a href="<?php echo base_url("cms/feedbacks/{$value->id}?from_page={$page}&per_page={$per_page}&showroom={$showroom}&from_date={$from_date}&to_date={$to_date}") ?>">
                             <button type="button" class="btn btn-success btn-xs">View</button>
