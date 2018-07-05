@@ -13,6 +13,8 @@ class Sync_model extends Crud_model
     $this->load->model('personal_information_model', 'personal_information_model');
     $this->load->model('survey_model', 'survey_model');
 
+    $this->per_page = 10;
+
     $this->questions = [
       # personal information
       'name' => 'Name',
@@ -76,6 +78,7 @@ class Sync_model extends Crud_model
     ];
   }
 
+  # fyi, this is the ugliest function in this system
   public function allF($from_date, $to_date, $showroom = null, $paginate = true)
   {
     $where_str = 'WHERE';

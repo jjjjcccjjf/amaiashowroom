@@ -1,3 +1,8 @@
+<style media="screen">
+  .active_lg {
+    font-weight: bold
+  }
+</style>
 <section id="main-content">
   <section class="wrapper">
     <!-- page start-->
@@ -53,7 +58,7 @@
 
                     <?php foreach ($res as $key => $value): ?>
                       <tr>
-                        <th scope="row"><?php echo $value->id ?></th>
+                        <th scope="row"><?php echo $counter--; ?></th>
                         <td><?php echo $value->name ?></td>
                         <td><?php echo $value->showroom ?></td>
                         <td><?php echo $value->timestamp_f ?></td>

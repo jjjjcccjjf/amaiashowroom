@@ -36,7 +36,10 @@ class Feedbacks extends Admin_core_controller {
     $data['unique_showrooms'] = $this->feedback_model->getShowrooms();
     $data['res'] = $res;
 
+
     $data['total_pages'] = ceil(count($res = $this->sync_model->allF($from_date, $to_date, $showroom, false)) / $this->per_page);
+    $data['counter'] = count($res) - (($this->page - 1)  * $this->per_page); # For counting down our table
+
     $this->wrapper('cms/feedbacks', $data);
   }
 

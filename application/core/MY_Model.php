@@ -271,8 +271,9 @@ class Crud_model extends CI_model
   public function paginateStr()
   {
     $paginate_str = '';
-    if ($this->input->get('page')){
-      $offset = ($this->input->get('page') - 1) * $this->per_page;
+    $p = $this->input->get('page') ?: 1;
+    if ($p){
+      $offset = ($p - 1) * $this->per_page;
       $paginate_str = "LIMIT $this->per_page OFFSET $offset";
     }
     return $paginate_str;
