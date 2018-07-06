@@ -267,8 +267,11 @@ Status 200 OK
       "age": "...",
       "civil_status": "...",
       "occupation": "...",
+      "specific_occupation": "...",
       "current_residence": "...",
+      "specific_residence": "...",
       "work_location": "...",
+      "specific_work_location": "...",
       "email_address": "...",
       "mobile_number": "...",
       "how_many_guests": "..."

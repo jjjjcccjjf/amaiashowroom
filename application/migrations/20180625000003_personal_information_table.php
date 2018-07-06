@@ -33,15 +33,30 @@ class Migration_personal_information_table extends CI_Migration {
         'constraint' => '200',
         'null' => false
       ),
+      'specific_occupation' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '400',
+        'null' => true
+      ),
       'current_residence' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
         'null' => false
       ),
+      'specific_residence' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '400',
+        'null' => true
+      ),
       'work_location' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
         'null' => false
+      ),
+      'specific_work_location' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '400',
+        'null' => true
       ),
       'email_address' => array(
         'type' => 'VARCHAR',

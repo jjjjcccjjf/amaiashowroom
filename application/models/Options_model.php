@@ -14,8 +14,8 @@ class Options_model extends Crud_model
     $this->work_location =
     $this->current_residence =
     ['Nearby (< 30mins away)', 'Medium distance (1/2 to 1 hr away)',
-    'Further away (over 1 hr away)', 'Others'];
-    $this->how_many_guests = ['1', '2', '3', '4', '5+'];
+    'Further away (over 1 hr away)'];
+    $this->how_many_guests = ['1', '2', '3', '4', '5+', 'None'];
 
     # Other information
     $this->buyer = ['To view my home',
