@@ -51,6 +51,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Showroom</th>
+                    <th>Generated code</th>
                     <th>Synced to server (Date filter applies here)</th>
                     <th>Submit date/time</th>
                     <th>Action</th>
@@ -64,6 +65,7 @@
                         <th scope="row"><?php echo $counter--; ?></th>
                         <td><?php echo $value->name ?></td>
                         <td><?php echo $value->showroom ?></td>
+                        <td><?php echo $value->generated_code ?></td>
                         <td><?php echo $value->created_at_f ?></td>
                         <td><?php echo $value->timestamp_f ?></td>
                         <td>
@@ -75,7 +77,7 @@
                     <?php endforeach; ?>
                   <?php else: ?>
                     <tr>
-                      <td colspan="6" style="text-align:center">Empty table data</td>
+                      <td colspan="7" style="text-align:center">Empty table data</td>
                     </tr>
                   <?php endif; ?>
                 </tbody>

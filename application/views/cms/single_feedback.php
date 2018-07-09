@@ -30,6 +30,11 @@
             <p class='meta-info'>
               <span>Showroom</span>: <?php echo $res->meta->showroom ?> <br>
               <span>Date submitted</span>: <?php echo $res->meta->timestamp_f ?> <br>
+
+              <?php if ($res->meta->generated_code): ?>
+                <span>Generated code</span>: <?php echo $res->meta->generated_code ?> <br>
+              <?php endif; ?>
+              
               <!-- <span>Date synced</span>: <?php echo $res->meta->created_at_f ?> -->
             </p>
           </header>
