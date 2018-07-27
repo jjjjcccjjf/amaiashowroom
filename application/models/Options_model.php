@@ -10,7 +10,7 @@ class Options_model extends Crud_model
     # Personal Information stuffs
     $this->age = ['20s', '30s', '40s', '50s', '60s', '70s above'];
     $this->civil_status = ['Single', 'Married', 'Separated/Widow'];
-    $this->occupation = ['Self-employed', 'Employed', 'Retired', 'Others'];
+    $this->occupation = ['Self-employed', 'Employed', 'Retired'];
     $this->work_location =
     $this->current_residence =
     ['Nearby (< 30mins away)', 'Medium distance (1/2 to 1 hr away)',
@@ -24,7 +24,8 @@ class Options_model extends Crud_model
     'To get inspired by interior design of the model units',
     'To get a feel of the environment',
     'Others'];
-    $this->non_buyer = ['I plan to purchase an Amaia unit and just need more information',
+    $this->non_buyer = ['I have decided to purchase an Amaia unit',
+    'I plan to purchase an Amaia unit and just need more information',
     'To see whether this would fit my immediate requirements for a home',
     'To get ideas for my future home',
     'Just curious about the new developments in my community',
