@@ -24,7 +24,9 @@ class Personal_information_model extends Crud_model
     'specific_work_location',
     'email_address',
     'mobile_number',
-    'how_many_guests'];
+    'how_many_guests',
+    'is_current_buyer'
+    ];
 
     $select_str = implode(', ', $fields);
     return $this->getSpFields($id, $select_str);

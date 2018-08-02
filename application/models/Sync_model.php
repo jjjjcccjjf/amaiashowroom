@@ -32,7 +32,6 @@ class Sync_model extends Crud_model
       'how_many_guests' => 'How many guests are with you?',
       # other information
       'is_current_buyer' => 'Are you a current Amaia buyer?',
-      'purpose_of_visit_buyer' => 'Purpose of visit (if an Amaia buyer)',
       'purpose_of_visit_non_buyer' => 'Purpose of visit (if NOT an Amaia buyer)',
       'source' => 'How did you learn about Amaia?',
       'budget' => 'How much is your budget to invest for a property?',
@@ -77,7 +76,13 @@ class Sync_model extends Crud_model
       'hbd_when' => 'When do you intend to reserve?',
       'hbd_if_not_purchasing' => 'If you do not intend to purchase, what were the reasons for such? (Choose maximum of three)',
       'hbd_recommend' => 'How likely is it that you would recommend this real estate company to others?',
-      'hbd_recommend_testimonial' => 'Please leave a brief testimonial/feedback (optional):'
+      'hbd_recommend_testimonial' => 'Please leave a brief testimonial/feedback (optional)',
+      'hbd_source' => 'How did you learn about Amaia?',
+      'hbd_budget' => 'How much is your budget to invest for a property?',
+      'hbd_primary_interest' => 'What project are you most interested in?',
+      'hbd_secondary_interest' => 'What other projects are you also interested in, if any?',
+      'hbd_primary_amenities' => 'What amenities do you consider as top-priority?',
+      'hbd_secondary_amenities' => 'What amenities do you consider secondary?'
     ];
   }
 
@@ -166,7 +171,7 @@ class Sync_model extends Crud_model
 
     $res = (object) [
       'personal_information' => $this->personal_information_model->getPersonalInformation($feedback->personal_information_id),
-      'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($feedback->personal_information_id)),
+      // 'other_information' => $this->explodeValues($this->personal_information_model->getOtherInformation($feedback->personal_information_id)),
       'meta' => $feedback
     ];
 
