@@ -279,15 +279,7 @@ Status 200 OK
       "how_many_guests": "..."
     },
     "other_information": {
-      "is_current_buyer": "...",
-      "purpose_of_visit_buyer": "...",
-      "purpose_of_visit_non_buyer": "...",
-      "source": ["...", "..."],
-      "budget": "...",
-      "primary_interest": "...",
-      "secondary_interest": ["...", "..."],
-      "primary_amenities": ["...", "..."],
-      "secondary_amenities": ["...", "...", "..."]
+      "is_current_buyer": "..."
     }
   },
   "survey": {
