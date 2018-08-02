@@ -71,7 +71,8 @@ Status 200 OK
             "2",
             "3",
             "4",
-            "5+"
+            "5+",
+            "None"
         ]
     },
     "other_information": {
@@ -85,6 +86,7 @@ Status 200 OK
                 "Others"
             ],
             "non_buyer": [
+                "I have decided to purchase an Amaia unit",
                 "I plan to purchase an Amaia unit and just need more information",
                 "To see whether this would fit my immediate requirements for a home",
                 "To get ideas for my future home",
