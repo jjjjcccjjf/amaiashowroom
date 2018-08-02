@@ -74,58 +74,12 @@ class Migration_personal_information_table extends CI_Migration {
         'null' => false
       )
     ));
-    # Other fields
+    # Is buyer
     $this->dbforge->add_field(array(
       'is_current_buyer' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
         'null' => false
-      ),
-      'purpose_of_visit_buyer' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => true,
-        'default' => null
-      ),
-      'purpose_of_visit_non_buyer' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => true,
-        'default' => null
-      ),
-      'source' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-        'comment' => 'How did you learn about Amaia? Can be more than one. Imploded by the pipe symbol (|)'
-      ),
-      'budget' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-      ),
-      'primary_interest' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-      ),
-      'secondary_interest' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-        'comment' => 'Can be more than one. Imploded by the pipe symbol (|)'
-      ),
-      'primary_amenities' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-        'comment' => 'Can be more than one. Imploded by the pipe symbol (|)'
-      ),
-      'secondary_amenities' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '200',
-        'null' => false,
-        'comment' => 'Can be more than one. Imploded by the pipe symbol (|)'
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");

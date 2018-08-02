@@ -11,22 +11,22 @@ class Migration_survey_table extends CI_Migration {
     $this->dbforge->add_field(array(
       'be_knowledge' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'be_courtesy' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'be_response' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'be_appearance' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
     ));
@@ -34,27 +34,27 @@ class Migration_survey_table extends CI_Migration {
     $this->dbforge->add_field(array(
       'sve_appearance' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'sve_attractiveness' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'sve_orderliness' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'sve_safety' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'sve_accessibility' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
     ));
@@ -62,27 +62,27 @@ class Migration_survey_table extends CI_Migration {
     $this->dbforge->add_field(array(
       'ssomu_cleanliness' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'ssomu_safety' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'ssomu_completeness' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'ssomu_accessibility' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'ssomu_comfort' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
     ));
@@ -90,32 +90,32 @@ class Migration_survey_table extends CI_Migration {
     $this->dbforge->add_field(array(
       'p_design' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'p_finishes' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'p_sizes' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'p_amenities' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'p_pricing' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'p_available' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
     ));
@@ -123,34 +123,62 @@ class Migration_survey_table extends CI_Migration {
     $this->dbforge->add_field(array(
       'hbd_how' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'hbd_how_testimonial' => array(
         'type' => 'TEXT',
-        'constraint' => '200',
         'null' => true,
         'default' => null
       ),
       'hbd_when' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false
       ),
       'hbd_if_not_purchasing' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false,
         'comment' => 'Can be more than one. Imploded by the pipe symbol (|)'
       ),
+      'hbd_source' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
+      'hbd_budget' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
+      'hbd_primary_interest' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
+      'hbd_secondary_interest' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
+      'hbd_primary_amenities' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
+      'hbd_secondary_amenities' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '500',
+        'null' => false,
+      ),
       'hbd_recommend' => array(
         'type' => 'VARCHAR',
-        'constraint' => '200',
+        'constraint' => '500',
         'null' => false,
       ),
       'hbd_recommend_testimonial' => array(
         'type' => 'TEXT',
-        'constraint' => '200',
         'null' => true,
         'default' => null
       ),

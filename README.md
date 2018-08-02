@@ -324,6 +324,12 @@ Status 200 OK
       "hbd_how_testimonial": "...",
       "hbd_when": "...",
       "hbd_if_not_purchasing": ["...", "..."],
+      "hbd_source":"...",
+      "hbd_budget":"...",
+      "hbd_primary_interest":"...",
+      "hbd_secondary_interest":"...",
+      "hbd_primary_amenities":"...",
+      "hbd_secondary_amenities":"...",
       "hbd_recommend": "...",
       "hbd_recommend_testimonial": "..."
     }
