@@ -349,3 +349,22 @@ Status 201 Created
     "updated_at": "0000-00-00 00:00:00"
 }
 ```
+
+
+
+### Web survey TODOs
+
+[] Update table structure to handle yung email token
+[] Email user with query string base64 encoded `survey/?t=SQzxWbxjywusjgs`
+[] Setup Email
+[] Email template
+[] Cookies or LocalStorage API
+[] Try POST request in JS/client-side/server-side
+[] Try authentication headers
+[] Try update user
+[] Gawin yung buong front-end
+[] Diskarte sa multiple forms
+[] Integrate HTML
+[] Tests / Required fields IE 11 etc
+[] Thank you page
+[] 404 the old email if tried to access again
