@@ -23,16 +23,13 @@ class Email_model extends CI_Model
     public function sendTakeSurvey($feedback)
     {
 
-        $this->email->from('fjanib@myoptimind.com', 'jhondz');
+        $this->email->from(getenv('TEST_EMAIL'), getenv('TEST_NAME'));
         $this->email->to($feedback->email_address);
         $link = base_url('web/survey/?token=' . urlencode($feedback->token));
         $message = "Please click the link to take the survey! <a href='{$link}'>Take Survey</a>";
         $this->email->subject('Email Test');
         $this->email->message($message);
-
-        if ($this->email->send()) {
-            return true;
-        }
-        return false;
+ 
+        return $this->email->send();
     }
 }
