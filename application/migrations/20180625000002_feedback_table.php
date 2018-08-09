@@ -51,6 +51,13 @@ class Migration_feedback_table extends CI_Migration {
         'null' => true,
         'default' => null,
         'comment' => 'For giveaway stuffs'
+      ),
+      'token' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '200',
+        'null' => true,
+        'default' => null,
+        'comment' => 'Email token'
       )
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");

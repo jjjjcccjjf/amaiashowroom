@@ -10,6 +10,7 @@ class Sync extends \Restserver\Libraries\REST_Controller
     $this->load->model('personal_information_model');
     $this->load->model('survey_model');
     $this->load->model('sync_model');
+    $this->load->model('email_model');
   }
 
   public function index_get()
@@ -36,6 +37,20 @@ class Sync extends \Restserver\Libraries\REST_Controller
       $this->feedback_model->deleteByTimestamp($data->meta->timestamp);
     }
     $last_id = $this->sync_model->add($data);
+
+    $this->feedback_model->setToken($last_id);
+
+    // Get feedback with personal information
+    $feedback = $this->feedback_model->getPersonalInfoById($last_id);
+
+    // Checks if feedback has no survey
+    if(!$this->feedback_model->hasSurvey($feedback->id)){
+      
+      # Send Email with link to the survey page
+      $this->email_model->sendTakeSurvey($feedback);
+
+    }
+
     $res = $this->feedback_model->get($last_id);
     $this->response($res, 201);
   }

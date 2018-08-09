@@ -72,4 +72,57 @@ class Feedback_model extends Crud_model
     return $res;
   }
 
+  public function setToken($id)
+  {
+    $this->db->reset_query();
+    $this->db->from('feedback');
+
+    # id is converted to base 64 
+    $token = base64_encode($id);
+
+
+    $this->db->set(['token' => $token]);
+    $this->db->where(['id' => $id]);
+
+    if($this->db->update()){
+      return true;
+    }
+    return false;
+
+  }
+
+  public function hasSurvey($id)
+  {
+    $this->db->reset_query();
+    $this->db->from('feedback');
+    $this->db->where('id',$id);
+    $feedback = $this->db->get()->row();
+
+    if($feedback->survey_id === NULL){
+      return false;
+    }
+    return true;
+  }
+
+  public function getByToken($token)
+  {
+    $this->db->reset_query();
+    $this->db->from('feedback');
+    $this->db->where('token',$token);
+    $feedback = $this->db->get()->row();
+    return $feedback;
+  }
+
+  public function getPersonalInfoById($id)
+  {
+    $this->db->reset_query();
+    $this->db->select('feedback.id as id,feedback.*, personal_information.*');
+    $this->db->from('feedback');
+    $this->db->join('personal_information','feedback.personal_information_id = personal_information.id');
+    
+    $feedback = $this->db->get()->row();
+    return $feedback;
+
+  }
+
 }
