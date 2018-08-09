@@ -354,9 +354,9 @@ Status 201 Created
 
 ### Web survey TODOs
 
-- [ ] Update table structure to handle yung email token  
-- [ ] Email user with query string base64 encoded `survey/?t=SQzxWbxjywusjgs`  
-- [ ] Setup Email  
+- [X] Update table structure to handle yung email token  
+- [X] Email user with query string base64 encoded `survey/?t=SQzxWbxjywusjgs`  
+- [X] Setup Email  
 - [ ] Email template  
 - [ ] Cookies or LocalStorage API  
 - [ ] Try POST request in JS/client-side/server-side  
