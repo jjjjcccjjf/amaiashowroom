@@ -19,7 +19,9 @@ class Sync extends \Restserver\Libraries\REST_Controller
 
   public function index_post()
   {
-    $data = json_decode($this->input->raw_input_stream); # We're getting from a raw post data
+    $data = json_decode(file_get_contents('php://input')); # We're getting from a raw post data
+
+    log_message('error', file_get_contents('php://input')); # For debugging purposes
 
     unset($data->personal_information->other_information->purpose_of_visit_buyer);
     unset($data->personal_information->other_information->purpose_of_visit_non_buyer);
@@ -29,7 +31,7 @@ class Sync extends \Restserver\Libraries\REST_Controller
     unset($data->personal_information->other_information->secondary_interest);
     unset($data->personal_information->other_information->primary_amenities);
     unset($data->personal_information->other_information->secondary_amenities);
-    
+
     # Check if the timestamp exists in the feedback table
     # Replace it if it exists
     if($this->feedback_model->checkTsExists($data->meta->timestamp)){
