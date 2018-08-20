@@ -23,6 +23,7 @@ class Sync extends \Restserver\Libraries\REST_Controller
     $data = json_decode(file_get_contents('php://input')); # We're getting from a raw post data
 
     log_message('error', file_get_contents('php://input')); # For debugging purposes
+    log_message('error', 'test'); # For debugging purposes
 
     unset($data->personal_information->other_information->purpose_of_visit_buyer);
     unset($data->personal_information->other_information->purpose_of_visit_non_buyer);
