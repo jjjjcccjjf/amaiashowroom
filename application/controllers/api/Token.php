@@ -7,19 +7,47 @@ class Token extends \Restserver\Libraries\REST_Controller
   {
     parent::__construct();
     $this->load->model('feedback_model');
+    $this->load->model('personal_information_model');
   }
 
   public function check_get()
   {
     $token = $this->input->get('t');
     if($token == null){
-      die('token not defined');
+      $this->response(['message' => 'unknown token'], 400);
     }
+
     $feedback = $this->feedback_model->getByToken($token);
     if($this->feedback_model->hasSurvey($feedback->id)){
-      die('true');
+      $this->response(['message' => 'user has already taken the survey'], 400);
     }
-    die('false');
+    
+    $personalinfo = $this->personal_information_model->getPersonalInformation($feedback->personal_information_id);
+    
+    $fields = ['is_current_buyer',
+    'purpose_of_visit_buyer',
+    'purpose_of_visit_non_buyer',
+    'source',
+    'budget',
+    'primary_interest',
+    'secondary_interest',
+    'primary_amenities',
+    'secondary_amenities'];
+
+    $res = [
+      'personal_information' => [
+        'personal_information' => []
+      ]
+    ];
+    foreach($personalinfo as $field=>$val){
+      if(!in_array($field,$fields)){
+        $res['personal_information']['personal_information'][$field] = $val;
+      }else{
+        $res['personal_information']['other_information'][$field] = $val;
+      }
+    }
+
+    $this->response($res, 200);
   }
 
 }
