@@ -55,6 +55,13 @@
             <li><a <?php echo $this->uri->segment(3) === 'projects-interested-in' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('cms/reports/projects-interested-in') ?>">Projects interested in</a></li>
           </ul>
         </li>
+        <li>
+          <a href="<?php echo base_url('cms/thankyou') ?>"
+            class="<?php echo $this->uri->segment(1) === 'cms' && ( $this->uri->segment(2) === 'thankyou') ? 'active': ''; ?>">
+            <i class="fa fa-book"></i>
+            <span>Survey Success Page</span>
+          </a>
+        </li>
       </ul>
       <!-- sidebar menu end-->
     </div>
