@@ -1,0 +1,61 @@
+
+@media screen and (max-width: 1600px) {
+  .breadcrumbs aside .line {width: 86%}
+  .questionnaire ul {width: 70%}
+}
+@media screen and (max-width: 1366px) {
+  .questionnaire ul {width: 80%}
+  }
+@media screen and (max-width: 1200px) {
+  .questionnaire ul {width: 95%}
+  }
+@media screen and (max-width: 1024px) {
+  .breadcrumbs .pagewrapper2 {max-width: 90%;}
+  .radiob label {font-size: 24px; line-height: 48px; height: 48px;}
+  .questionnaire ul li {width: 280px; margin-bottom: 20px;}
+  .breadcrumbs aside .line {width: 83%}
+  .questionnaire p.agreement {font-size: 20px; line-height: 26px;}
+  .questionnaire ul.checkbox li {width: 100%; margin-bottom: 20px}
+}
+
+@media screen and (max-width: 768px) {
+  .breadcrumbs aside ul li h6 {font-size: 13px; line-height: 20px;}
+  .breadcrumbs aside ul li span {width: 22px; height: 22px;}
+  .breadcrumbs aside {padding: 0 0 0 22px;}
+  .breadcrumbs aside .line {width: 86%}
+  .breadcrumbs aside .line, .breadcrumbs aside .line1 {bottom: 12px}
+  .questionnaire ul {justify-content: center;}
+  header h1 {font-size: 24px; line-height: 60px}
+}
+@media screen and (max-width: 640px) {
+  header aside img {width: 180px;}
+  .breadcrumbs aside ul li h6 {font-size: 11px; line-height: 17px;}
+  .breadcrumbs aside ul li:nth-child(3) h6 {margin-left: -43px;}
+  .breadcrumbs aside {padding-left: 0;}
+  .breadcrumbs aside .line, .breadcrumbs aside .line1 {bottom: 10px}
+  .breadcrumbs aside .line {width: 88%}
+  .breadcrumbs aside ul li:nth-child(4) h6 {margin-bottom: 12px;}
+  .breadcrumbs aside ul li:first-child h6 {margin-left: -25px}
+  header h1 {font-size: 20px; line-height: 48px}
+  header {padding: 20px 0 15px}
+  .questionnaire h5 {font-size: 18px; line-height: 24px;}
+  .questionnaire h4 {font-size: 22px; line-height: 30px;}
+  .questionnaire aside .back, .questionnaire aside .next {font-size: 16px!important;}
+  .questionnaire p.agreement, .questionnaire ul.checkbox li label {font-size: 18px; line-height: 24px;}
+  .questionnaire p.agreement input[type="submit"] {font-size: 24px; width: 240px;}
+  .select-selected, .questionnaire p select, .questionnaire p input[type="text"] {font-size: 20px;}
+}
+@media screen and (max-width: 479px) {
+    .breadcrumbs aside ul li.current h6 {opacity: 1;}
+    .breadcrumbs aside ul li h6 {margin-left: 0!important; text-align: left;}
+    .breadcrumbs aside ul li {width: 50%;}
+    header aside {width: 100%!important; text-align: center;}
+    header h1 {width: 100%; float: left;text-align: center;}
+    .breadcrumbs aside ul {justify-content: flex-start!important;}
+    .breadcrumbs aside ul li span {float: left;}
+    .breadcrumbs aside .line, .breadcrumbs aside .line1 {display: none;}
+    .questionnaire h5 {font-size: 16px; line-height: 22px;}
+    .questionnaire h4 {font-size: 18px; line-height: 24px;}
+    .radiob label {font-size: 18px; line-height: 36px; width: 100%; height: 36px;}
+    .radiob li {height: 36px}
+}
