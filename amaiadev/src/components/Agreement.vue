@@ -1,5 +1,6 @@
 <template>
-    <div v-if="this.currentModule == 6">
+<div>
+    <div v-if="this.currentModule == 6 && !submitted">
         <h5>AGREEMENT</h5>
           
           <p class="agreement">
@@ -11,6 +12,13 @@
           </p>
           <p class="agreement"><input @click="handleSubmit" type="submit" name="" value="SUBMIT"></p>
     </div>
+    <div v-if="this.currentModule == 999">
+        <h4><b>{{ this.successMessage.heading }}</b></h4>
+        <p class="agreement">
+            {{ this.successMessage.body }}
+        </p>
+    </div>
+</div>
 </template>
 
 <script>
@@ -21,6 +29,12 @@ import { module_mixin } from '../mixins/module_mixin.js'
         methods: {
             handleSubmit(){
                 this.$store.dispatch('submitSurvey')
+                this.submitted = true
+            }
+        },
+        data(){
+            return {
+                submitted: false
             }
         }
     }

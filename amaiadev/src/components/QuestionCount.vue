@@ -1,5 +1,5 @@
 <template>
-    <h5 v-if="!(this.currentModule == 6)">Question {{ currentQuestion }} of {{ totalQuestions }}</h5>
+    <h5 v-if="!(this.currentModule == 6 || this.currentModule == 999)">Question {{ currentQuestion }} of {{ totalQuestions }}</h5>
 </template>
 
 <script>

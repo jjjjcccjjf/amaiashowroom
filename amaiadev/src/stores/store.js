@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
         minInArray: 0,
         maxInArray: 0,
         oldTotal:0,
+        success: {},
         others: {},
         survey: {
             "buying_experience": {
@@ -74,7 +75,8 @@ export const store = new Vuex.Store({
         getMinInArray: state => state.minInArray,
         getMaxInArray: state => state.maxInArray,
         getPersonalInfo: state => state.personal_information,
-        getMeta: state => state.meta
+        getMeta: state => state.meta,
+        getSuccess: state => state.success
     },
     mutations: {
         questionUp(state){
@@ -174,6 +176,9 @@ export const store = new Vuex.Store({
         },
         setMeta: (state,meta) => {
             state.meta = meta
+        },
+        setSuccess: (state, success) => {
+            state.success = success
         }
     },
     actions: {
@@ -219,7 +224,7 @@ export const store = new Vuex.Store({
                     data: res
                 })
                 .then(response => {
-                    console.log(response.data)
+                    state.currentModule = 999
                 });
                 
                 // window.location.href="pang"

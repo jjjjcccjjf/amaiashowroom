@@ -14,7 +14,8 @@ export const mixin = {
           minInArray: 'getMinInArray',
           maxInArray: 'getMaxInArray',
           personalInfo: 'getPersonalInfo',
-          metaInfo: 'getMeta'
+          metaInfo: 'getMeta',
+          successMessage: 'getSuccess'
         })
     }
 }

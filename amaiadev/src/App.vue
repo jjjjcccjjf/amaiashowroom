@@ -18,7 +18,8 @@
       </section>
     </div>
     <div v-else>
-      404
+            <h1>404</h1>
+            <p>page not found</p>
     </div>
   </div>
 </template>
@@ -54,6 +55,7 @@ export default {
                 .map(v => v.split("="))
                 .reduce((map, [key, value]) => map.set(key, decodeURIComponent(value)), new Map())
   let token = params.get('token')
+  // check api
   axios({
             method: 'GET',
             url: `http://showroom.amaialand.com/api/token/check/?t=${token}`,
@@ -71,6 +73,22 @@ export default {
       this.$store.commit('setMeta',response.data.meta)
       this.valid = true
     }
+  })
+
+
+  //get success page contents
+  axios({
+            method: 'GET',
+            url: `http://showroom.amaialand.com/api/thankyou`,
+            headers: {
+            "Content-Type": "application/json"
+            },
+            auth: {
+                username: 'admin',
+                password: '8NSaK!9=M}a({-18Nq9${vY-{#Z<WH7KDKhr(I*^yss|z{!<L[/"BNI@U(5?@#h'
+            },
+  }).then(response => {
+    this.$store.commit('setSuccess',response.data);
   })
 
   },
@@ -97,5 +115,10 @@ export default {
 </script>
 
 <style>
-
+h1,p{
+  text-align: center;
+}
+h1{
+  margin-top: 200px !important;
+}
 </style>

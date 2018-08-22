@@ -1,5 +1,5 @@
 <template>
-    <section class="breadcrumbs" >
+    <section class="breadcrumbs" v-if="this.currentModule !== 999">
         <div class="pagewrapper2">
           <aside>
             <ul>
