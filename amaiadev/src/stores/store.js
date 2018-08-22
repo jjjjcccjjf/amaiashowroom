@@ -182,10 +182,9 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
-        submitSurvey: ({ commit, state }) => {
+        submitSurvey: ({ state }) => {
             if(state.currentModule == Object.keys(state.survey).length+1){
                 let newSurvey = {}
-                let currentSurvey = state.survey
                 for(let key of Object.keys(state.survey)){
                     newSurvey[key] = {}
                     for(let field of Object.keys(state.survey[key])){
@@ -214,8 +213,6 @@ export const store = new Vuex.Store({
                 res.survey = newSurvey
                 res.meta = state.meta
                 res.personal_information = state.personal_information
-                console.log(res)
-                return
                 axios({
                     method: 'POST',
                     url: `${state.getShowroomURL}api/sync/`,
@@ -228,7 +225,7 @@ export const store = new Vuex.Store({
                     },
                     data: res
                 })
-                .then(response => {
+                .then(() => {
                     state.currentModule = 999
                 });
                 
