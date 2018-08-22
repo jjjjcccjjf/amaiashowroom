@@ -43,7 +43,7 @@ class Sync extends \Restserver\Libraries\REST_Controller
 
     $this->feedback_model->setToken($last_id);
 
-    if($data->meta->survey_by_email){
+    if(isset($data->meta->survey_by_email) && $data->meta->survey_by_email){
       // Get feedback with personal information
       $feedback = $this->feedback_model->getPersonalInfoById($last_id);
   
