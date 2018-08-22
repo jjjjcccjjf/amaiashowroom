@@ -10,24 +10,24 @@ uploads/*
 
 
 #amaia survey gitignore
-amaiasurvey/.DS_Store
-amaiasurvey/node_modules
-amaiasurvey/dist
+amaiadev/.DS_Store
+amaiadev/node_modules
+amaiasurvey
 
 # local env files
-amaiasurvey/.env.local
-amaiasurvey/.env.*.local
+amaiadev/.env.local
+amaiadev/.env.*.local
 
 # Log files
-amaiasurvey/npm-debug.log*
-amaiasurvey/yarn-debug.log*
-amaiasurvey/yarn-error.log*
+amaiadev/npm-debug.log*
+amaiadev/yarn-debug.log*
+amaiadev/yarn-error.log*
 
 # Editor directories and files
-amaiasurvey/.idea
-amaiasurvey/.vscode
-amaiasurvey/*.suo
-amaiasurvey/*.ntvs*
-amaiasurvey/*.njsproj
-amaiasurvey/*.sln
-amaiasurvey/*.sw*
+amaiadev/.idea
+amaiadev/.vscode
+amaiadev/*.suo
+amaiadev/*.ntvs*
+amaiadev/*.njsproj
+amaiadev/*.sln
+amaiadev/*.sw*
