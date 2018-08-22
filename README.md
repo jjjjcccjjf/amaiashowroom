@@ -13,6 +13,7 @@
         1. [Password](#password)
     1. [Showrooms](#showrooms)
     1. [Sync](#sync)
+    2. [Success](#thankyou)
 
 ## API documentation
 #### API URLs
@@ -336,6 +337,13 @@ Status 200 OK
 }
 ```
 
+If survey_by_email field is present in the meta object, the user will receive an email notification for the web version of the survey.
+```json
+"meta": {
+    "survey_by_email": true
+}
+```
+
 ##### Response
 ```json
 Status 201 Created
@@ -349,22 +357,33 @@ Status 201 Created
     "updated_at": "0000-00-00 00:00:00"
 }
 ```
+####thankyou
+### Survey Success message
+`GET /thankyou`
 
+##### Response
+```json
+Status 200 
+{
+    "heading": "Thank you!",
+    "body": "You have finished the survey."
+}
+```
 
 
 ### Web survey TODOs
 
-- [ ] Update table structure to handle yung email token  
-- [ ] Email user with query string base64 encoded `survey/?t=SQzxWbxjywusjgs`  
-- [ ] Setup Email  
-- [ ] Email template  
+- [X] Update table structure to handle yung email token  
+- [X] Email user with query string base64 encoded `survey/?t=SQzxWbxjywusjgs`  
+- [X] Setup Email  
+- [X] Email template  
 - [ ] Cookies or LocalStorage API  
-- [ ] Try POST request in JS/client-side/server-side  
-- [ ] Try authentication headers  
-- [ ] Try update user  
-- [ ] Gawin yung buong front-end  
-- [ ] Diskarte sa multiple forms  
-- [ ] Integrate HTML  
-- [ ] Tests / Required fields IE 11 etc  
-- [ ] Thank you page  
-- [ ] 404 the old email if tried to access again  
+- [X] Try POST request in JS/client-side/server-side  
+- [X] Try authentication headers  
+- [X] Try update user  
+- [X] Gawin yung buong front-end  
+- [X] Diskarte sa multiple forms  
+- [X] Integrate HTML  
+- [X] Tests / Required fields IE 11 etc  
+- [X] Thank you page  
+- [X] 404 the old email if tried to access again  
