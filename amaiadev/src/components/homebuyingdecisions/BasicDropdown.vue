@@ -5,6 +5,9 @@
         <div :class="{'select-items':true, 'select-hide':this.toggleCheckbox}">
             <DropDownitem :format="false" v-for="(item,index) in this.items" :key="index" :val="item" :text="item" @handleClick="handleClickChild"/>
         </div>
+        <div>
+        <p v-if="selected == 'Others'"><input @input="updateOthers" :value="this.storeOthers[this.fieldname]" type="text" placeholder="Kindly specify" ></p>
+        </div>
     </div>
 </template>
 
@@ -44,6 +47,13 @@ export default {
             }
             this.$store.commit('updateSyncData',params)
     
+        },
+        updateOthers(e){
+            let params = {
+                key: this.fieldname,
+                val: e.target.value
+            }
+            this.$store.commit('addOthers',params)
         }
     },
     props: [ 'heading', 'withOthers','modulename','fieldname', 'items','defaultoption'],

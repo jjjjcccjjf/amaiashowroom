@@ -201,6 +201,9 @@ export const store = new Vuex.Store({
                             newSurvey[key][field] = []
                             newSurvey[key][field] = newArr
                         }else{
+                            if(x == 'Others'){
+                                x = `Others-${state.others[field]}`
+                            }
                             newSurvey[key][field] = x
                         }
                     }
@@ -211,6 +214,8 @@ export const store = new Vuex.Store({
                 res.survey = newSurvey
                 res.meta = state.meta
                 res.personal_information = state.personal_information
+                console.log(res)
+                return
                 axios({
                     method: 'POST',
                     url: `${state.getShowroomURL}api/sync/`,
