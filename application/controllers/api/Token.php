@@ -49,7 +49,7 @@ class Token extends \Restserver\Libraries\REST_Controller
       }
     }
 
-    $metafields = ['survey_by_email'];
+    $metafields = ['survey_by_email','id','personal_information_id','survey_id','token','created_at','updated_at'];
     foreach($feedback as $field=>$val){
       if(!in_array($field,$metafields)){
         $res['meta'][$field] = $val;
