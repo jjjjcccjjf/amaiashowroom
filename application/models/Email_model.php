@@ -25,7 +25,7 @@ class Email_model extends CI_Model
 
         $this->email->from(getenv('TEST_EMAIL'), getenv('TEST_NAME'));
         $this->email->to($feedback->email_address);
-        $link = base_url('web/survey/?token=' . urlencode($feedback->token));
+        $link = base_url().'?token=' . urlencode($feedback->token);
         $message = "Please click the link to take the survey! <a href='{$link}'>Take Survey</a>";
         $this->email->subject('Email Test');
         $this->email->message($message);
