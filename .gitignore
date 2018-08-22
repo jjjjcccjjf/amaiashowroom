@@ -6,3 +6,28 @@ uploads/*
 .env.development
 .env.testing
 .env.production
+
+
+
+#amaia survey gitignore
+amaiasurvey/.DS_Store
+amaiasurvey/node_modules
+amaiasurvey/dist
+
+# local env files
+amaiasurvey/.env.local
+amaiasurvey/.env.*.local
+
+# Log files
+amaiasurvey/npm-debug.log*
+amaiasurvey/yarn-debug.log*
+amaiasurvey/yarn-error.log*
+
+# Editor directories and files
+amaiasurvey/.idea
+amaiasurvey/.vscode
+amaiasurvey/*.suo
+amaiasurvey/*.ntvs*
+amaiasurvey/*.njsproj
+amaiasurvey/*.sln
+amaiasurvey/*.sw*
