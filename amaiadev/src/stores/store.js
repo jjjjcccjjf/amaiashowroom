@@ -176,6 +176,7 @@ export const store = new Vuex.Store({
         },
         setMeta: (state,meta) => {
             state.meta = meta
+            state.meta.survey_start = (new Date()).getTime()
         },
         setSuccess: (state, success) => {
             state.success = success
@@ -212,6 +213,7 @@ export const store = new Vuex.Store({
                 let res = {}
                 res.survey = newSurvey
                 res.meta = state.meta
+                res.meta.survey_end = (new Date()).getTime()
                 res.personal_information = state.personal_information
                 axios({
                     method: 'POST',
