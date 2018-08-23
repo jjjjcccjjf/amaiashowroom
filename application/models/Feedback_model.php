@@ -119,7 +119,7 @@ class Feedback_model extends Crud_model
     $this->db->select('feedback.id as id,feedback.*, personal_information.*');
     $this->db->from('feedback');
     $this->db->join('personal_information','feedback.personal_information_id = personal_information.id');
-    
+    $this->db->where('feedback.id',$id);
     $feedback = $this->db->get()->row();
     return $feedback;
 
